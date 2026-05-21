@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Booking Request Received | Shiva Grand Residency</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#e1e3e1",
+                        "surface-dim": "#d8dad9",
+                        "on-primary-container": "#a9eebf",
+                        "surface-bright": "#f8faf8",
+                        "secondary-fixed-dim": "#8cd6a9",
+                        "on-surface-variant": "#404942",
+                        "on-surface": "#191c1b",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1b",
+                        "surface-tint": "#286a46",
+                        "primary-fixed": "#adf2c3",
+                        "inverse-on-surface": "#eff1ef",
+                        "secondary-fixed": "#a7f3c3",
+                        "secondary-container": "#a7f3c3",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#bfc9bf",
+                        "on-tertiary-container": "#ffd3d6",
+                        "tertiary-fixed-dim": "#ffb2b9",
+                        "outline": "#707971",
+                        "surface": "#f8faf8",
+                        "on-tertiary-fixed-variant": "#73323b",
+                        "on-secondary-fixed": "#002111",
+                        "secondary": "#1e6b46",
+                        "primary": "#0d5533",
+                        "on-tertiary-fixed": "#3b0612",
+                        "tertiary-fixed": "#ffdadc",
+                        "surface-container-highest": "#e1e3e1",
+                        "primary-container": "#2c6e49",
+                        "surface-container": "#eceeec",
+                        "on-primary-fixed-variant": "#065230",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#26714b",
+                        "surface-container-high": "#e6e9e7",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#92d5a8",
+                        "primary-fixed-dim": "#92d5a8",
+                        "tertiary-container": "#944c55",
+                        "background": "#f8faf8",
+                        "inverse-surface": "#2e3130",
+                        "on-secondary-fixed-variant": "#005231",
+                        "surface-container-low": "#f2f4f2",
+                        "on-primary-fixed": "#002110",
+                        "tertiary": "#77353e"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .botanical-gradient {
+            background: linear-gradient(135deg, #0d5533 0%, #2c6e49 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased">
+    <!-- TopNavBar (Synced with SCREEN_23) -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm dark:shadow-none font-['Manrope'] antialiased">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+            <a class="text-2xl font-bold tracking-tight text-[#0d5533] dark:text-[#a7f3c3]" href="index.html">Shiva Grand</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#2c6e49] dark:hover:text-[#4c956c] transition-colors"
+                    href="index.html">Home</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#2c6e49] dark:hover:text-[#4c956c] transition-colors"
+                    href="book-you-stay.html">Rooms</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#2c6e49] dark:hover:text-[#4c956c] transition-colors"
+                    href="local-guide.html">Local Guide</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#2c6e49] dark:hover:text-[#4c956c] transition-colors"
+                    href="blog.html">Blog</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#2c6e49] dark:hover:text-[#4c956c] transition-colors"
+                    href="contact-us.html">Contact</a>
+            </div>
+            <a href="booking.html" class="inline-block text-center bg-[#2C6E49] text-white px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide hover:opacity-90 transition-all duration-300 active:scale-95">
+                Book Now
+            </a>
+        </div>
+    </nav>
+    <main class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <!-- Hero Section: Asymmetric Editorial Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 relative h-[500px] lg:h-[650px] rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
+                        data-alt="Calm luxury hotel lobby with green plants"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGVxaXJT-hEjL925HGU8n3wT6N6dWJW1AJ1H_DTxgSqj6qEG_SXm1unjN1BmJ3HcmDKx6AW5royVURs-KXvdNwoQd7vNGUxmbg0cKzO3B7V0q-RZ1vt8pyPD_mTL4vhBippUBju2-5-xc17125qvY2pS0xoqWGMMvW5sfNqk7bXlYdmEu4pZ8xqoSOf4gBpvW0bho2NKYB7387wU7mrrlBk0zi6Amo2oiI80oLAWaD2OFf8EQH8IYQVhsnGBveVnfCi2A0KJ2EvQEo" />
+                    <div class="absolute inset-0 bg-primary/10"></div>
+                </div>
+                <div class="lg:col-span-5 lg:-ml-24 z-10">
+                    <div class="bg-surface-container-lowest p-10 lg:p-16 shadow-lg rounded-xl">
+                        <span class="label-md text-primary font-bold tracking-[0.2em] mb-6 block">PENDING
+                            CONFIRMATION</span>
+                        <h1
+                            class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-primary leading-tight mb-6">
+                            We've received your request.
+                        </h1>
+                        <p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                            Thank you for choosing Shiva Grand Residency. Your reservation is currently being processed
+                            and is <span class="font-bold text-primary">NOT yet confirmed</span>.
+                        </p>
+                        <div
+                            class="flex items-center gap-4 bg-secondary-container/30 p-4 rounded-xl border border-primary/5">
+                            <span class="material-symbols-outlined text-primary" data-weight="fill">call</span>
+                            <p class="text-sm font-medium text-on-secondary-container">
+                                Our staff will call you shortly on your provided number to finalize your stay.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Details Bento Grid -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reference Card -->
+                <div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <span class="text-[0.65rem] uppercase tracking-widest text-on-surface-variant font-bold">Request
+                            Reference</span>
+                        <h2 class="text-3xl font-bold text-primary mt-2">#SGR-88429</h2>
+                    </div>
+                    <p class="text-sm text-on-surface-variant mt-4">Please quote this number if you need to contact us
+                        before our call.</p>
+                </div>
+                <!-- Summary Card -->
+                <div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div>
+                            <span
+                                class="text-[0.65rem] uppercase tracking-widest text-on-surface-variant font-bold">Check-In</span>
+                            <p class="font-bold text-lg text-primary mt-1">Oct 24, 2024</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.65rem] uppercase tracking-widest text-on-surface-variant font-bold">Check-Out</span>
+                            <p class="font-bold text-lg text-primary mt-1">Oct 26, 2024</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.65rem] uppercase tracking-widest text-on-surface-variant font-bold">Room
+                                Type</span>
+                            <p class="font-bold text-lg text-primary mt-1">Deluxe Suite</p>
+                        </div>
+                        <div>
+                            <span
+                                class="text-[0.65rem] uppercase tracking-widest text-on-surface-variant font-bold">Guests</span>
+                            <p class="font-bold text-lg text-primary mt-1">2 Adults</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Next Steps & Support -->
+            <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-8">What happens next?</h3>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+                                <span class="text-primary font-bold">01</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Verification</h4>
+                                <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">Our reservation desk
+                                    verifies room availability for your selected dates.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+                                <span class="text-primary font-bold">02</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Confirmation Call</h4>
+                                <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">A team member will call
+                                    you within 30 minutes to confirm details and payment options.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+                                <span class="text-primary font-bold">03</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Digital Voucher</h4>
+                                <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">Once confirmed via
+                                    phone, a formal booking voucher will be sent to your email.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-primary p-12 rounded-xl text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-4">Need immediate help?</h3>
+                        <p class="text-white/80 mb-8 leading-relaxed">If you haven't heard from us or need to change
+                            your request immediately, please reach out to our 24/7 concierge.</p>
+                        <div class="space-y-4">
+                            <a class="flex items-center gap-4 hover:translate-x-2 transition-transform"
+                                href="tel:09047757777">
+                                <span class="material-symbols-outlined">call</span>
+                                <span class="font-medium">090477 57777</span>
+                            </a>
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined">location_on</span>
+                                <span class="text-sm">54, Old Post Office Rd, Coimbatore</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Background texture decoration -->
+                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer (Synced with SCREEN_23) -->
+    <footer class="bg-primary text-white pt-20 pb-24 md:pb-12 border-t border-primary-container">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2 space-y-6">
+                <h3 class="text-2xl font-bold tracking-tighter">Hotel Shiva Grand</h3>
+                <p class="text-white/80 max-w-sm leading-relaxed">
+                    A Comfortable Stay, Every Time
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li><a class="hover:underline" href="book-you-stay.html">Rooms</a></li>
+                    <li><a class="hover:underline" href="blog.html">Blog</a></li>
+                    <li><a class="hover:underline" href="local-guide.html">Local Guide</a></li>
+                    <li><a class="hover:underline" href="contact-us.html">Contact</a></li>
+                    <li><a class="hover:underline" href="index.html">Home</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Contact</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        <span>54, Old Post Office Rd, Near Collector Office, Gopalapuram, Coimbatore, Tamil Nadu
+                            641018</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">call</span>
+                        <span>090477 57777</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-8 mt-20 pt-8 border-t border-white/10 text-center text-xs text-white/60">
+            © 2026 Hotel Shiva Grand. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,461 @@
+<html class="light" lang="en">
+
+<head>
+
+     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Book Your Stay | Shiva Grand Residency</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#a9eebf",
+                        "tertiary-fixed-dim": "#ffb2b9",
+                        "surface-container-highest": "#e1e3e1",
+                        "on-tertiary-container": "#ffd3d6",
+                        "inverse-on-surface": "#eff1ef",
+                        "secondary": "#1e6b46",
+                        "on-background": "#191c1b",
+                        "secondary-fixed-dim": "#8cd6a9",
+                        "primary-fixed": "#adf2c3",
+                        "outline": "#707971",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#bfc9bf",
+                        "surface-variant": "#e1e3e1",
+                        "on-secondary-fixed-variant": "#005231",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdadc",
+                        "inverse-primary": "#92d5a8",
+                        "surface-dim": "#d8dad9",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2c6e49",
+                        "primary-fixed-dim": "#92d5a8",
+                        "on-tertiary-fixed-variant": "#73323b",
+                        "on-primary-fixed": "#002110",
+                        "surface-tint": "#286a46",
+                        "surface": "#f8faf8",
+                        "secondary-fixed": "#a7f3c3",
+                        "background": "#f8faf8",
+                        "tertiary-container": "#944c55",
+                        "surface-container-high": "#e6e9e7",
+                        "surface-bright": "#f8faf8",
+                        "inverse-surface": "#2e3130",
+                        "primary": "#0d5533",
+                        "on-secondary-fixed": "#002111",
+                        "secondary-container": "#a7f3c3",
+                        "on-tertiary-fixed": "#3b0612",
+                        "on-surface": "#191c1b",
+                        "surface-container-low": "#f2f4f2",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eceeec",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#26714b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#065230",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#77353e",
+                        "on-surface-variant": "#404942",
+                        "on-secondary": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .botanical-gradient {
+            background: linear-gradient(135deg, #0d5533 0%, #2c6e49 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+
+   
+    <!-- TopAppBar updated to match SCREEN_18 style -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm font-['Manrope'] antialiased">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+            <div class="text-2xl font-bold tracking-tight text-[#0d5533] dark:text-[#a7f3c3]">
+                Shiva Grand
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-zinc-600 font-medium hover:text-[#2c6e49] transition-colors" href="index.html">Home</a>
+                <a class="text-zinc-600 font-medium hover:text-[#2c6e49] transition-colors" href="book-you-stay.html">Rooms</a>
+                <a class="text-zinc-600 font-medium hover:text-[#2c6e49] transition-colors" href="local-guide.html">Local Guide</a>
+                <a class="text-zinc-600 font-medium hover:text-[#2c6e49] transition-colors" href="blog.html">Blog</a>
+                <a class="text-zinc-600 font-medium hover:text-[#2c6e49] transition-colors" href="contact-us.html">Contact</a>
+            </div>
+            <a href="booking.html" class="inline-block text-center botanical-gradient text-on-primary px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all duration-300 active:scale-95">
+                Book Now
+            </a>
+        </div>
+    </nav>
+    <main class="pt-28">
+        <!-- Hero Section with Room Selection -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Left Column: Room Selection Area -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="relative group">
+                        <div class="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg bg-surface-container">
+                            <img alt="Selected Room" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZLuQ5lCT22yd5ejTUAbgipYSuBPv4r4UPyVPevFYCcRZwm_lSQn8Zd8DHRyzbp4E4NX6cHJsEnRlbND8_ttXF1nEQcsOjMV38FinviCAdKp62fIRg7ceV3xowH8dS0-pQ7pSecOnxM_rmUSTqgZoGuojbsP9Ceo47uWKf9B4vQ24RS1KttLUf9gMDIKKFP1w7c_BSjo7O66u-7incPNZxz2QCOyi0EOMXVHPg0Ofe_W4ip8mSH3xhLecMwp_uswCSjxUzJz8ateHf" />
+                            <div
+                                class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-sm">
+                                <p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">
+                                    Selected Room</p>
+                                <p class="text-lg font-bold text-primary">Deluxe AC Room</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-2xl space-y-4">
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Select
+                                Room Category</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full bg-white border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary px-4 py-3 text-sm appearance-none cursor-pointer">
+                                    <option>Standard Double</option>
+                                    <option selected="">Deluxe AC</option>
+                                    <option>Premium Family</option>
+                                    <option>Executive Suite</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3.5 rounded-xl font-bold tracking-wide transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-xl">sync_alt</span>
+                            Change Room Type
+                        </button>
+                    </div>
+                </div>
+                <!-- Right Column: Booking Form (Kept from source) -->
+                <div
+                    class="lg:col-span-5 bg-surface-container-lowest p-8 lg:p-10 rounded-3xl shadow-sm border border-outline-variant/10">
+                    <h2 class="text-2xl font-bold text-primary mb-8 tracking-tight">Reserve Your Room</h2>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Check-in</label>
+                                <input
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
+                                    type="date" />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Check-out</label>
+                                <input
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
+                                    type="date" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Guests</label>
+                                <select
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm appearance-none">
+                                    <option>1 Guest</option>
+                                    <option selected="">2 Guests</option>
+                                    <option>3 Guests</option>
+                                    <option>4+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Room
+                                    Type</label>
+                                <select
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm appearance-none">
+                                    <option>Standard Double</option>
+                                    <option selected="">Deluxe AC</option>
+                                    <option>Premium Family</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Full
+                                Name</label>
+                            <input
+                                class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
+                                placeholder="John Doe" type="text" />
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Phone
+                                    Number</label>
+                                <input
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
+                                    placeholder="+91 00000 00000" type="tel" />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Email</label>
+                                <input
+                                    class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
+                                    placeholder="john@example.com" type="email" />
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">Special
+                                Requests</label>
+                            <textarea
+                                class="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm resize-none"
+                                placeholder="Late check-in, extra towels..." rows="2"></textarea>
+                        </div>
+                        <button
+                            class="w-full botanical-gradient text-on-primary py-4 rounded-xl font-bold tracking-widest uppercase text-xs shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98]"
+                            type="submit">
+                            Confirm Reservation
+                        </button>
+                        <p class="text-center text-[10px] text-on-surface-variant tracking-wide mt-4">
+                            NO UPFRONT PAYMENT REQUIRED • FREE CANCELLATION UP TO 24H
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Our Curated Rooms Section (Updated from SCREEN_37 layout) -->
+        <section class="bg-surface-container-low py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="label-md uppercase tracking-[0.2em] text-secondary font-bold text-xs">Stay in
+                            Excellence</span>
+                        <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tighter text-primary mt-2">Our Curated
+                            Rooms</h2>
+                    </div>
+                    <button class="text-primary font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
+                        View All Categories <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Standard Double -->
+                    <div class="group">
+                        <div
+                            class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container shadow-sm mb-6 transition-transform duration-500 hover:scale-[1.02]">
+                            <img alt="Standard Double Room" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8KHTiQVTOog-9_Rok5v_lrnzM8aHMIoALDnVkb5K1dmNp0sqJg5HVmu-NwV5oDb6YxRlSMiQVyGPWSCKvdMnHg15YETGIZnR2bgvPjkvZ9osDCvWkIZJCEAXPBcUnTaj1PAH_0HM3KixSq2TfNjvfw99gA2YE9uAy0PxhO_60TwDTRLK1FGqitlzzIGnmtkwsMeweVgIdrG5XQO8_rG4k9l7n8OxBjd4foqX1MxDfdUQj2LfgxoJ8jeiI4j9ym0MaBzwfIi5brIOq" />
+                            <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary uppercase">Standard</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">Standard Double</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Perfect for solo travelers or
+                            couples seeking a quiet retreat.</p>
+                        <div class="flex items-center gap-4 text-xs font-bold text-secondary">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">wifi</span> Free Wifi</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">ac_unit</span> Non-AC</span>
+                        </div>
+                    </div>
+                    <!-- Deluxe AC -->
+                    <div class="group">
+                        <div
+                            class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container shadow-sm mb-6 transition-transform duration-500 hover:scale-[1.02]">
+                            <img alt="Deluxe AC Room" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZLuQ5lCT22yd5ejTUAbgipYSuBPv4r4UPyVPevFYCcRZwm_lSQn8Zd8DHRyzbp4E4NX6cHJsEnRlbND8_ttXF1nEQcsOjMV38FinviCAdKp62fIRg7ceV3xowH8dS0-pQ7pSecOnxM_rmUSTqgZoGuojbsP9Ceo47uWKf9B4vQ24RS1KttLUf9gMDIKKFP1w7c_BSjo7O66u-7incPNZxz2QCOyi0EOMXVHPg0Ofe_W4ip8mSH3xhLecMwp_uswCSjxUzJz8ateHf" />
+                            <div
+                                class="absolute bottom-4 left-4 bg-secondary/80 backdrop-blur-md px-3 py-1 rounded-full">
+                                <span class="text-[10px] font-bold tracking-widest text-on-primary uppercase">Most
+                                    Popular</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">Deluxe AC</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Spacious interiors with premium
+                            amenities for the modern guest.</p>
+                        <div class="flex items-center gap-4 text-xs font-bold text-secondary">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">wifi</span> Free Wifi</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">ac_unit</span> Climate Control</span>
+                        </div>
+                    </div>
+                    <!-- Premium Family -->
+                    <div class="group">
+                        <div
+                            class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container shadow-sm mb-6 transition-transform duration-500 hover:scale-[1.02]">
+                            <img alt="Premium Family Suite" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuARCVTykjNdNaZaZt7n_abtgj-5GKIVfsSvgMm5-9Ey1rtx6jM6AfJnw-EqQzctrBA1pRy14G5lXpMxPvAZXE8jWmqvIzoEl8hcSSzMgdjpl1isyWyKe12ClD7LFXW-tvHopexuzXOwKf-rxKvCh0ACilfURdEFhI9DPFEB9O5KM5Aqri87IIkVRdXH3iUTxuHHegcSMz_YsaXUnRLnhROWFRH3ENefg7nKvs9P-ZDI7M2Lkq0vr2Bxx2v_obD4tw-umuEmNbCcsDEN" />
+                            <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary uppercase">Premium</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">Premium Family</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Designed for families who value
+                            space, luxury, and togetherness.</p>
+                        <div class="flex items-center gap-4 text-xs font-bold text-secondary">
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">group</span> 4 Adults</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">tv</span> Smart TV</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Centrally Located Section (Preserved from source) -->
+        <section class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div
+                        class="rounded-3xl overflow-hidden h-[500px] shadow-sm relative grayscale hover:grayscale-0 transition-all duration-700">
+                        <img alt="Map of Coimbatore" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbFyCh0kqR7nN6eO4hXywN6hGMkzOf81eRNHFi-AGZu-Or1pZBEb7Jr-ofZ8yhLQGtHfvtejwscnkGhM5rnaMSx8RNMSLP8bo91DxgnvjjsUrtuKAT9rGzblEkJisyTeG7vK_ZlvxYSCr3JNIzCYUARFl7Hzgb3XbvUhroWlbOYCBFE4ZpFuRgkRVbvJqNgeWD1Q2srIADhKbO5Ql4UMFbXqYhtycAMRuCK_7cRqa831NQnflDznN8i3s5B-aNIhOzl2JVXMr8voOw" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div
+                                class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-8">
+                    <div>
+                        <span class="label-md uppercase tracking-[0.2em] text-secondary font-bold text-xs">Prime
+                            Connectivity</span>
+                        <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tighter text-primary mt-2">Centrally
+                            Located</h2>
+                    </div>
+                    <p class="text-lg text-on-surface-variant leading-relaxed">
+                        Situated in the heart of Coimbatore, we provide easy access to the city's business hubs,
+                        shopping centers, and transportation links.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-on-secondary-container">train</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary">Railway Station</h4>
+                                <p class="text-sm text-on-surface-variant">Only 1.5km away, 5 minutes by taxi.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-on-secondary-container">flight</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary">International Airport</h4>
+                                <p class="text-sm text-on-surface-variant">Located 12km away, 25 minutes commute.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-on-secondary-container">shopping_bag</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary">Brookefields Mall</h4>
+                                <p class="text-sm text-on-surface-variant">Walkable distance to the city's premier
+                                    shopping.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="botanical-gradient text-on-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg">
+                        Get Directions
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer updated to match SCREEN_18 style -->
+    <footer class="bg-primary text-white pt-20 pb-24 md:pb-12 border-t border-primary-container">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2 space-y-6">
+                <h3 class="text-2xl font-bold tracking-tighter">Hotel Shiva Grand</h3>
+                <p class="text-white/80 max-w-sm leading-relaxed">
+                    A Comfortable Stay, Every Time
+                </p>
+                <div class="text-sm text-white/80 space-y-2">
+                    <p>54, Old Post Office Rd, Near Collector Office, Gopalapuram, Coimbatore, Tamil Nadu 641018</p>
+                    <p class="font-bold">Phone: 090477 57777</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li><a class="hover:underline" href="book-you-stay.html">Rooms</a></li>
+                    <li><a class="hover:underline" href="blog.html">Blog</a></li>
+                    <li><a class="hover:underline" href="local-guide.html">Local Guide</a></li>
+                    <li><a class="hover:underline" href="contact-us.html">Contact</a></li>
+                    <li><a class="hover:underline" href="index.html">Home</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Contact</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li><a class="hover:underline" href="book-you-stay.html">Rooms</a></li>
+                    <li><a class="hover:underline" href="blog.html">Blog</a></li>
+                    <li><a class="hover:underline" href="local-guide.html">Local Guide</a></li>
+                    <li><a class="hover:underline" href="contact-us.html">Contact</a></li>
+                    <li><a class="hover:underline" href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-8 mt-20 pt-8 border-t border-white/10 text-center text-xs text-white/60">
+            © 2026 Hotel Shiva Grand. All rights reserved.</div>
+    </footer>
+    <!-- BottomNavBar (Mobile) - Preserved -->
+    <nav
+        class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl rounded-t-3xl z-50 shadow-[0_-12px_32px_rgba(25,28,27,0.06)]">
+        <a class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 rounded-full px-5 py-2 active:scale-90 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>bed</span>
+            <span class="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Rooms</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined">collections</span>
+            <span class="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Gallery</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined">restaurant</span>
+            <span class="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Dining</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Location</span>
+        </a>
+    </nav>
+</body>
+
+</html>

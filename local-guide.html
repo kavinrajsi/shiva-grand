@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2C6E49",
+                        "secondary": "#4C956C",
+                        "surface": "#F9FAF9",
+                        "on-surface": "#1A1C1A",
+                        "surface-container": "#F2F4F2",
+                        "outline": "#717971",
+                        "error": "#BA1A1A",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2c6e49",
+                        "on-surface-variant": "#404942",
+                        "outline-variant": "#bfc9bf",
+                        "surface-container-low": "#f2f4f2",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .botanical-gradient {
+            background: linear-gradient(135deg, #2C6E49 0%, #4C956C 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm font-['Manrope'] antialiased">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+            <a class="text-2xl font-bold tracking-tight text-[#0d5533] dark:text-[#a7f3c3]" href="index.html">Shiva Grand</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors"
+                    href="index.html">Home</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors"
+                    href="book-you-stay.html">Rooms</a>
+                <a class="text-primary dark:text-[#a7f3c3] font-semibold border-b-2 border-primary pb-1" href="local-guide.html">Local
+                    Guide</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors"
+                    href="blog.html">Blog</a>
+                <a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors"
+                    href="contact-us.html">Contact</a>
+            </div>
+            <a href="booking.html" class="inline-block text-center bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide hover:opacity-90 transition-all duration-300 active:scale-95">
+                Book Now
+            </a>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <!-- Shortened Text-Only Header -->
+        <section class="py-16 bg-surface-container-low border-b border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-8">
+                <span class="label-md text-primary font-bold tracking-[0.2em] uppercase mb-4 block">Coimbatore Local
+                    Guide</span>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface mb-6 leading-tight">
+                    Pulse of the <span class="text-primary">Manchester</span> of South.
+                </h1>
+                <p class="text-lg text-on-surface-variant leading-relaxed max-w-3xl font-medium">
+                    Strategically located near the Railway Station &amp; Collectorate, Shiva Grand serves as your
+                    gateway to Coimbatore's spiritual sanctuaries and urban treasures.
+                </p>
+            </div>
+        </section>
+        <!-- Curated Attractions -->
+        <section class="py-24 bg-surface">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <h2 class="text-4xl font-extrabold tracking-tight mb-4">Curated Attractions</h2>
+                        <p class="text-on-surface-variant max-w-lg">Experience the perfect blend of Dravidian
+                            architecture, lush parks, and modern retail therapy—all within easy reach.</p>
+                    </div>
+                    <div class="hidden md:flex gap-4">
+                        <button
+                            class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                            <span class="material-symbols-outlined">west</span>
+                        </button>
+                        <button
+                            class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                            <span class="material-symbols-outlined">east</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+                    <!-- Marudhamalai Temple -->
+                    <div
+                        class="md:col-span-8 group relative rounded-xl overflow-hidden bg-white shadow-sm transition-transform duration-500 hover:scale-[1.01]">
+                        <img alt="Ancient Indian temple architecture"
+                            class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwdDqFCBzbaEV4BsqxJt6gvnHU3Xz7rVhu0wEZTWcjQ7HKs1Hwrf_3er8vYVgiSV9J61P4PtYV9JXiRHe_Elh7vwJAPSzfeXmnSLaDpg7BvgRa7r1I9_vQof5zotye5b7KyAN1QOpKoZ4gNWzGl3P0nv5fa0PJNbGcdJPuRFC4MmQvucw4tvppXzCrXalNLbwVlhi_0nUYD_rCgLYXNNqJ0dd95RZplOLLZSg_UhTcxjg62fHCdijR9cqhwGbYrAnFAX0bo8ngWLXK" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="bg-surface/80 backdrop-blur-md inline-block px-3 py-1 rounded-full mb-4">
+                                <span class="text-xs font-bold text-primary tracking-widest uppercase">Spiritual
+                                    Heritage</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Marudhamalai Temple</h3>
+                            <p class="text-white/80 max-w-md">Perched on a hill 15km away, this 12th-century Murugan
+                                temple offers panoramic views of the Western Ghats.</p>
+                        </div>
+                    </div>
+                    <!-- VOC Park -->
+                    <div
+                        class="md:col-span-4 group relative rounded-xl overflow-hidden bg-white shadow-sm transition-transform duration-500 hover:scale-[1.01]">
+                        <img alt="Lush green city park" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1xoai1Q4KOL0lS6s0iadq5axm1XJgp67j_m3cFFTWbetRr1v53A9VILwxHPhXga144ndcybTmWKa0bdamcGGle63XckC1mJBBNyCatmkhRFcS17sLlREGEF-5quTSjSc7sYRG-kx-7Tsvnsrsf5Os5PNLfZt9IWuBiTsNWYM59jPF7jS5wudXWCOq-i4HbInP_pY4buXkWyr3C77Zv7Pwdkr4JT2fQ3t5tGbcbcxlmSEQUB7-EzgpaFlei9pzhMHaQm-QmSNTwk1" />
+                        <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all"></div>
+                        <div class="absolute bottom-0 left-0 p-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">VOC Park &amp; Zoo</h3>
+                            <p class="text-white/80 text-sm">Perfect for morning walks. Features a mini zoo, toy train,
+                                and lush gardens only 10 mins away.</p>
+                        </div>
+                    </div>
+                    <!-- Brookefields Mall -->
+                    <div
+                        class="md:col-span-4 group relative rounded-xl overflow-hidden bg-white shadow-sm transition-transform duration-500 hover:scale-[1.01]">
+                        <img alt="Modern shopping mall interior" class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhu202OiEAWw9enxoI0Vae_-IAP3h727Owg4SIKawq84OA-n0e94XXICSHHciszwI9KJQVzHDU4aGieQA3k7HhXadjm7nPHcWN3EMymAfoOG0sJxNZchCULRwXlx1wcNaUqgWLf414vbA13wXEWrL3-_Rd6EGn_5nkYYQsrYxveGpq7IcQ54GR4fY_wA34mC8MtgJPdCS1GEEh334qmzz1iC1p24XVMQKgCKWFZRNUwlXJFgBYEAHkYDgmzuEsXRMQ0Bx55SPYRmqf" />
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+                            <span class="material-symbols-outlined text-white text-4xl mb-4">shopping_bag</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Brookefields Mall</h3>
+                            <p class="text-white/70 text-sm">Premier shopping destination for global brands and local
+                                delicacies.</p>
+                        </div>
+                    </div>
+                    <!-- Perur Temple -->
+                    <div
+                        class="md:col-span-8 group relative rounded-xl overflow-hidden bg-white shadow-sm transition-transform duration-500 hover:scale-[1.01]">
+                        <div class="grid grid-cols-2 h-full">
+                            <div class="p-10 flex flex-col justify-center bg-white">
+                                <span class="text-primary font-bold mb-4 flex items-center gap-2">
+                                    <span class="material-symbols-outlined" data-weight="fill">location_on</span> 7.5 KM
+                                    Away
+                                </span>
+                                <h3 class="text-3xl font-extrabold mb-4">Perur Pateeswarar Temple</h3>
+                                <p class="text-on-surface-variant leading-relaxed">Famous for its architectural
+                                    grandeur, particularly the 'Kanaka Sabha' featuring intricately carved stone pillars
+                                    from the 2nd century.</p>
+                                <button
+                                    class="mt-8 text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                                    Get Directions <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                            <div class="relative overflow-hidden">
+                                <img alt="Ancient stone pillars in a south indian temple"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6OGA9H5Pq7ETCqe2HMOGxp1xjQcYOP_xoVHnw340NKVhJKKNzMWx9aWFoASGcCx6XFmdCt7HpuA4BG95Bikfwtqw0L5M5y2ui1q4-1Y4SrNcxThewirNjRa2ZO6A3pLDeih1TC4V7EtkdAQytFm96cVg6WieXXktOW3mfXRug6Q7VzpoDbWHMf9ZqAkaMp8hH18La193b-BGMsXOxFr-CWu64ikvB04ht7RE3DxQPB0wVCIDDdV81U2uCg2Et2NutVrXAv8SZdgtN" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Travel Tips & Location -->
+        <section class="py-24 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="text-4xl font-extrabold tracking-tight mb-8">Traveler's Handbook</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-6 p-6 bg-white rounded-xl shadow-sm border border-outline-variant/10">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-primary">directions_car</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Local Commute</h4>
+                                    <p class="text-on-surface-variant text-sm">Uber and Ola are highly reliable in
+                                        Coimbatore. For an authentic experience, try the city buses—they are known for
+                                        being the most efficient in TN.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 p-6 bg-white rounded-xl shadow-sm border border-outline-variant/10">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-primary">restaurant</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Must-Try Food</h4>
+                                    <p class="text-on-surface-variant text-sm">Don't miss the Annapoorna Sambar and the
+                                        famous 'Kalaan' (spicy mushroom) street food near VOC park.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 p-6 bg-white rounded-xl shadow-sm border border-outline-variant/10">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-primary">sunny</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Best Time to Visit</h4>
+                                    <p class="text-on-surface-variant text-sm">September to March offers pleasant
+                                        weather. Avoid the peak summer months of April and May if possible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="relative z-10 bg-white p-0 rounded-2xl shadow-2xl border border-outline-variant/10 overflow-hidden flex flex-col h-full">
+                        <!-- Clean, expanded Map Container -->
+                        <div class="flex-grow relative min-h-[400px]">
+                            <img alt="Map of Coimbatore Railway Station area"
+                                class="w-full h-full object-cover grayscale contrast-125 brightness-95"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTgmFh_2aiICjQy45hcglgf7rDErFgZ6Qh8AI4mMT8GAKOrJlGnwfMXel2bX5iAYOKv4sp5L3yqEGP1RI7hJbcWurZoAHJk7qMjQyiJV1IVVaImGNTiX8TeNfx-m3lsrH7qPMaRWkG5zCOn-96GDUZvvFnmmb8KY_aour4HFQCDD3Bqoz1yMn8ZhRZS6a2tB_-v31ftgZrnXpqNX-ibIBsXBUvgK43UX26uqwsmKMfS15UFTk-S0B2fBlnmchgUmNwdApNTj0OPZmT" />
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="relative">
+                                    <div
+                                        class="w-10 h-10 bg-primary/30 rounded-full animate-ping absolute -top-1 -left-1">
+                                    </div>
+                                    <div
+                                        class="w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-white text-xs">home</span>
+                                    </div>
+                                    <div
+                                        class="absolute -top-14 left-1/2 -translate-x-1/2 bg-white px-4 py-2 rounded-lg shadow-xl whitespace-nowrap font-bold text-sm border border-outline-variant/10">
+                                        Shiva Grand Residency
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-white border-t border-outline-variant/10 space-y-4">
+                            <div
+                                class="flex justify-between items-center text-sm border-b border-outline-variant/10 pb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">train</span>
+                                    <span class="text-on-surface-variant">Railway Station</span>
+                                </div>
+                                <span class="font-bold text-primary">5 mins walk</span>
+                            </div>
+                            <div
+                                class="flex justify-between items-center text-sm border-b border-outline-variant/10 pb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">apartment</span>
+                                    <span class="text-on-surface-variant">Collectorate</span>
+                                </div>
+                                <span class="font-bold text-primary">2 mins walk</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">flight_takeoff</span>
+                                    <span class="text-on-surface-variant">Airport (CJB)</span>
+                                </div>
+                                <span class="font-bold text-primary">25 mins drive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-20 max-w-7xl mx-auto px-8">
+            <div class="botanical-gradient rounded-3xl p-12 md:p-20 text-center text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6 relative z-10">Ready to explore Coimbatore?</h2>
+                <p class="text-lg text-white/90 mb-10 max-w-xl mx-auto relative z-10">
+                    Stay at the heart of the city with rooms starting from 1500 INR. Comfort &amp; convenience both
+                    under one roof.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center relative z-10">
+                    <button
+                        class="bg-white text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-surface-container transition-colors">Book
+                        Your Stay</button>
+                    <button
+                        class="border-2 border-white/30 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition-colors">Download
+                        City Map</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer from Screen 32 -->
+    <footer class="bg-primary text-white pt-20 pb-24 md:pb-12 border-t border-primary-container">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2 space-y-6">
+                <h3 class="text-2xl font-bold tracking-tighter">Hotel Shiva Grand</h3>
+                <p class="text-white/80 max-w-sm leading-relaxed">
+                    A Comfortable Stay, Every Time
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li><a class="hover:underline" href="index.html">Home</a></li>
+                    <li><a class="hover:underline" href="book-you-stay.html">Rooms</a></li>
+                    <li><a class="hover:underline" href="local-guide.html">Local Guide</a></li>
+                    <li><a class="hover:underline" href="blog.html">Blog</a></li>
+                    <li><a class="hover:underline" href="contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-white/60">Contact</h4>
+                <ul class="space-y-4 text-sm text-white/80">
+                    <li><a class="hover:underline" href="index.html">Home</a></li>
+                    <li><a class="hover:underline" href="book-you-stay.html">Rooms</a></li>
+                    <li><a class="hover:underline" href="local-guide.html">Local Guide</a></li>
+                    <li><a class="hover:underline" href="blog.html">Blog</a></li>
+                    <li><a class="hover:underline" href="contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-8 mt-20 pt-8 border-t border-white/10 text-center text-xs text-white/60">
+            © 2026 Hotel Shiva Grand. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
