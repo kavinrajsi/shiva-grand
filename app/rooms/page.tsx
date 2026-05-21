@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import RoomsForm from '@/components/RoomsForm'
 
 export default function Rooms() {
@@ -218,7 +219,7 @@ export default function Rooms() {
       </section>
       {/* BottomNavBar (Mobile) */}
       <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl rounded-t-3xl z-50 shadow-[0_-12px_32px_rgba(25,28,27,0.06)]">
-        <a
+        <Link
           className="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 rounded-full px-5 py-2 active:scale-90 transition-transform"
           href="/rooms"
         >
@@ -226,21 +227,21 @@ export default function Rooms() {
             bed
           </span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Rooms</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
           href="/#gallery"
         >
           <span className="material-symbols-outlined">collections</span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Gallery</span>
-        </a>
-        <a
+        </Link>
+        <Link
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
           href="/local-guide"
         >
           <span className="material-symbols-outlined">restaurant</span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Dining</span>
-        </a>
+        </Link>
         <a
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
           href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+54+Old+Post+Office+Road+Coimbatore"
