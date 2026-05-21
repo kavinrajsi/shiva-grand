@@ -205,9 +205,14 @@ export default function Rooms() {
                 </div>
               </div>
             </div>
-            <button className="botanical-gradient text-on-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+54+Old+Post+Office+Road+Coimbatore"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="botanical-gradient text-on-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg inline-block"
+            >
               Get Directions
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -215,7 +220,7 @@ export default function Rooms() {
       <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl rounded-t-3xl z-50 shadow-[0_-12px_32px_rgba(25,28,27,0.06)]">
         <a
           className="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-100 rounded-full px-5 py-2 active:scale-90 transition-transform"
-          href="#"
+          href="/rooms"
         >
           <span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>
             bed
@@ -224,21 +229,23 @@ export default function Rooms() {
         </a>
         <a
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
-          href="#"
+          href="/#gallery"
         >
           <span className="material-symbols-outlined">collections</span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Gallery</span>
         </a>
         <a
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
-          href="#"
+          href="/local-guide"
         >
           <span className="material-symbols-outlined">restaurant</span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Dining</span>
         </a>
         <a
           className="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-90 transition-transform"
-          href="#"
+          href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+54+Old+Post+Office+Road+Coimbatore"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span className="material-symbols-outlined">location_on</span>
           <span className="font-manrope text-[10px] uppercase tracking-widest font-bold mt-1">Location</span>

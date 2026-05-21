@@ -43,7 +43,12 @@ export default function Contact() {
             </div>
           </div>
           {/* Map Representation */}
-          <div className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-surface-container-low shadow-sm group">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+54+Old+Post+Office+Road+Coimbatore"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-surface-container-low shadow-sm group block"
+          >
             <div className="absolute inset-0 flex items-center justify-center z-10">
               <div className="text-center">
                 <div className="inline-block p-4 bg-white shadow-xl rounded-full mb-2">
@@ -67,7 +72,7 @@ export default function Contact() {
             <div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur p-2 rounded text-[10px] text-primary font-medium shadow-sm">
               Near Coimbatore Junction &amp; Collectorate
             </div>
-          </div>
+          </a>
         </div>
         {/* Right Side: Contact Form */}
         <div className="lg:col-span-7">

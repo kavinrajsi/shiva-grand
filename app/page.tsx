@@ -22,12 +22,17 @@ export default function Home() {
             Clean rooms and a hassle-free stay every time.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <button className="bg-white text-primary px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-zinc-100 transition-colors">
+            <Link href="/rooms" className="bg-white text-primary px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-zinc-100 transition-colors">
               View Rooms
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors">
+            </Link>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+54+Old+Post+Office+Road+Coimbatore"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
+            >
               Location Map
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -183,7 +188,7 @@ export default function Home() {
         </div>
       </section>
       {/* Gallery Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section id="gallery" className="py-24 bg-white overflow-hidden">
         <div className="px-6 max-w-7xl mx-auto mb-12">
           <span className="text-secondary font-bold text-sm tracking-widest uppercase">Take a Look</span>
           <h2 className="text-4xl font-bold mt-2">Facility Gallery</h2>
@@ -333,7 +338,9 @@ export default function Home() {
           <div className="flex justify-center mt-12">
             <a
               className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-[#1e4d33] transition-all shadow-md active:scale-95"
-              href="#"
+              href="https://www.google.com/maps/search/?api=1&query=Shiva+Grand+Residency+Coimbatore"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <span className="material-symbols-outlined">rate_review</span>
               Leave a Review on Google

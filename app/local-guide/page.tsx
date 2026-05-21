@@ -100,9 +100,14 @@ export default function LocalGuide() {
                     Famous for its architectural grandeur, particularly the &apos;Kanaka Sabha&apos; featuring
                     intricately carved stone pillars from the 2nd century.
                   </p>
-                  <button className="mt-8 text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Perur+Pateeswarar+Temple+Coimbatore"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform"
+                  >
                     Get Directions <span className="material-symbols-outlined">arrow_forward</span>
-                  </button>
+                  </a>
                 </div>
                 <div className="relative overflow-hidden">
                   <img
