@@ -7,7 +7,6 @@ export default function Booking() {
           <div className="lg:col-span-7 relative h-[500px] lg:h-[650px] rounded-full overflow-hidden">
             <img
               className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
-              data-alt="Calm luxury hotel lobby with green plants"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGVxaXJT-hEjL925HGU8n3wT6N6dWJW1AJ1H_DTxgSqj6qEG_SXm1unjN1BmJ3HcmDKx6AW5royVURs-KXvdNwoQd7vNGUxmbg0cKzO3B7V0q-RZ1vt8pyPD_mTL4vhBippUBju2-5-xc17125qvY2pS0xoqWGMMvW5sfNqk7bXlYdmEu4pZ8xqoSOf4gBpvW0bho2NKYB7387wU7mrrlBk0zi6Amo2oiI80oLAWaD2OFf8EQH8IYQVhsnGBveVnfCi2A0KJ2EvQEo"
               alt="Calm luxury hotel lobby with green plants"
             />
