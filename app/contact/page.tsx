@@ -1,3 +1,5 @@
+import ContactForm from '@/components/ContactForm'
+
 export default function Contact() {
   return (
     <main className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
@@ -68,64 +70,8 @@ export default function Contact() {
           </div>
         </div>
         {/* Right Side: Contact Form */}
-        <div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-emerald-900/5">
-          <form className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Name */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-on-surface-variant tracking-wider uppercase ml-1">
-                  Name
-                </label>
-                <input
-                  className="w-full bg-surface-container-low border-none rounded-xl p-4 text-on-surface placeholder:text-outline/50 focus:ring-1 focus:ring-emerald-500 transition-all"
-                  placeholder="Your full name"
-                  type="text"
-                />
-              </div>
-              {/* Email */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-on-surface-variant tracking-wider uppercase ml-1">
-                  Email
-                </label>
-                <input
-                  className="w-full bg-surface-container-low border-none rounded-xl p-4 text-on-surface placeholder:text-outline/50 focus:ring-1 focus:ring-emerald-500 transition-all"
-                  placeholder="email@example.com"
-                  type="email"
-                />
-              </div>
-            </div>
-            {/* Phone */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-on-surface-variant tracking-wider uppercase ml-1">
-                Phone Number
-              </label>
-              <input
-                className="w-full bg-surface-container-low border-none rounded-xl p-4 text-on-surface placeholder:text-outline/50 focus:ring-1 focus:ring-emerald-500 transition-all"
-                placeholder="+91 00000 00000"
-                type="tel"
-              />
-            </div>
-            {/* Message */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-on-surface-variant tracking-wider uppercase ml-1">
-                Message
-              </label>
-              <textarea
-                className="w-full bg-surface-container-low border-none rounded-xl p-4 text-on-surface placeholder:text-outline/50 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
-                placeholder="How can we help you?"
-                rows={5}
-              ></textarea>
-            </div>
-            <button
-              className="w-full bg-emerald-900 text-white py-5 rounded-xl font-bold tracking-wide shadow-lg hover:bg-emerald-800 active:scale-[0.98] transition-all"
-              type="submit"
-            >
-              Send Inquiry
-            </button>
-            <p className="text-center text-xs text-on-surface-variant/60 italic">
-              By submitting this form, you agree to our privacy policy and terms of service.
-            </p>
-          </form>
+        <div className="lg:col-span-7">
+          <ContactForm />
         </div>
       </div>
     </main>

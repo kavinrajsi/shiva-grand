@@ -1,3 +1,5 @@
+import RoomsForm from '@/components/RoomsForm'
+
 export default function Rooms() {
   return (
     <main className="pt-28">
@@ -45,105 +47,7 @@ export default function Rooms() {
             </div>
           </div>
           {/* Right Column: Booking Form */}
-          <div className="lg:col-span-5 bg-surface-container-lowest p-8 lg:p-10 rounded-3xl shadow-sm border border-outline-variant/10">
-            <h2 className="text-2xl font-bold text-primary mb-8 tracking-tight">Reserve Your Room</h2>
-            <form className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Check-in
-                  </label>
-                  <input
-                    className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
-                    type="date"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Check-out
-                  </label>
-                  <input
-                    className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
-                    type="date"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Guests
-                  </label>
-                  <select className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm appearance-none">
-                    <option>1 Guest</option>
-                    <option defaultValue="">2 Guests</option>
-                    <option>3 Guests</option>
-                    <option>4+ Guests</option>
-                  </select>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Room Type
-                  </label>
-                  <select className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm appearance-none">
-                    <option>Standard Double</option>
-                    <option defaultValue="">Deluxe AC</option>
-                    <option>Premium Family</option>
-                  </select>
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                  Full Name
-                </label>
-                <input
-                  className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
-                  placeholder="John Doe"
-                  type="text"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Phone Number
-                  </label>
-                  <input
-                    className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
-                    placeholder="+91 00000 00000"
-                    type="tel"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                    Email
-                  </label>
-                  <input
-                    className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm"
-                    placeholder="john@example.com"
-                    type="email"
-                  />
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1">
-                  Special Requests
-                </label>
-                <textarea
-                  className="w-full bg-surface-container-high border-none rounded-xl focus:ring-0 focus:border-b-2 focus:border-primary px-4 py-3 text-sm resize-none"
-                  placeholder="Late check-in, extra towels..."
-                  rows={2}
-                ></textarea>
-              </div>
-              <button
-                className="w-full botanical-gradient text-on-primary py-4 rounded-xl font-bold tracking-widest uppercase text-xs shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98]"
-                type="submit"
-              >
-                Confirm Reservation
-              </button>
-              <p className="text-center text-[10px] text-on-surface-variant tracking-wide mt-4">
-                NO UPFRONT PAYMENT REQUIRED • FREE CANCELLATION UP TO 24H
-              </p>
-            </form>
-          </div>
+          <RoomsForm />
         </div>
       </section>
       {/* Our Curated Rooms Section */}

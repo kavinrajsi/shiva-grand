@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BookingForm from '@/components/BookingForm'
 
 export default function Home() {
   return (
@@ -376,66 +377,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Check-in Date</label>
-                  <input
-                    className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-                    type="date"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Check-out Date</label>
-                  <input
-                    className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-                    type="date"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Name</label>
-                  <input
-                    className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-                    placeholder="Enter your name"
-                    type="text"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Phone</label>
-                  <input
-                    className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-                    placeholder="+91 00000 00000"
-                    type="tel"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Stay Type</label>
-                <select className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary">
-                  <option>Standard Double (₹1,500)</option>
-                  <option>Deluxe AC (₹1,850)</option>
-                  <option>Family Room (₹2,000)</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Notes</label>
-                <textarea
-                  className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary resize-none"
-                  placeholder="Late check-in, etc."
-                  rows={3}
-                ></textarea>
-              </div>
-              <button
-                className="w-full bg-primary text-white py-4 rounded-lg uppercase tracking-widest text-xs font-extrabold hover:bg-[#1e4d33] transition-all shadow-md"
-                type="submit"
-              >
-                Send Booking Inquiry
-              </button>
-            </form>
-          </div>
+          <BookingForm />
         </div>
       </section>
     </main>
