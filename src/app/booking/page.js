@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HOTEL_ADDRESS } from "@/lib/address";
 
 export const metadata = {
   title: "Booking Pending — Shiva Grand",
@@ -144,9 +145,7 @@ export default function BookingPage() {
                 </a>
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined">location_on</span>
-                  <span className="text-sm">
-                    54, Old Post Office Rd, Coimbatore
-                  </span>
+                  <span className="text-sm">{HOTEL_ADDRESS}</span>
                 </div>
               </div>
             </div>

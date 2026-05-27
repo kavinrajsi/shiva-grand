@@ -5,6 +5,7 @@ import { Resend } from "resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateBookingInquiry } from "@/lib/validations";
+import { HOTEL_ADDRESS } from "@/lib/address";
 
 function escapeHtml(str) {
   return String(str)
@@ -138,7 +139,7 @@ export async function sendBookingInquiry(_prevState, formData) {
         For anything urgent, call us on <strong>090477 57777</strong>.
       </p>
       <p style="color:#707971;font-size:12px;margin-top:32px;">
-        Shiva Grand Residency · 54, Old Post Office Rd, Gopalapuram, Coimbatore 641018
+        Shiva Grand Residency · ${HOTEL_ADDRESS}
       </p>
     </div>
   `.trim();

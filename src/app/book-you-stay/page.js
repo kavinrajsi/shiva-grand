@@ -1,6 +1,7 @@
 import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
 import { BOOKING_GUESTS, BOOKING_ROOM_TYPES } from "@/lib/validations";
+import { HOTEL_MAPS_URL } from "@/lib/address";
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -124,7 +125,7 @@ export default async function BookYourStayPage({ searchParams }) {
                     id="room-category"
                     name="room-category"
                     defaultValue="Deluxe AC"
-                    className="w-full bg-white border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary px-4 py-3 text-sm appearance-none cursor-pointer"
+                    className="w-full bg-white bg-none border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary pl-4 pr-12 py-3 text-sm appearance-none cursor-pointer"
                   >
                     <option>Standard Double</option>
                     <option>Deluxe AC</option>
@@ -264,12 +265,14 @@ export default async function BookYourStayPage({ searchParams }) {
                 </div>
               ))}
             </div>
-            <button
-              type="button"
-              className="botanical-gradient text-on-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg"
+            <a
+              href={HOTEL_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block botanical-gradient text-on-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide shadow-lg"
             >
               Get Directions
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { HOTEL_ADDRESS } from "@/lib/address";
 
 const QUICK_LINKS = [
   { href: "/book-you-stay", label: "Rooms" },
@@ -9,6 +13,9 @@ const QUICK_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/studio")) return null;
+
   return (
     <footer className="bg-[#2C6E49] text-white pt-20 pb-24 md:pb-12 border-t border-[#2C6E49]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -45,10 +52,7 @@ export default function Footer() {
               <span className="material-symbols-outlined text-sm">
                 location_on
               </span>
-              <span>
-                54, Old Post Office Rd, Near Collector Office, Gopalapuram,
-                Coimbatore, Tamil Nadu 641018
-              </span>
+              <span>{HOTEL_ADDRESS}</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">call</span>

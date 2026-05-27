@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import { HOTEL_ADDRESS } from "@/lib/address";
 
 export const metadata = {
   title: "Contact Us — Shiva Grand",
@@ -31,11 +32,7 @@ export default function ContactUsPage() {
               <div>
                 <h3 className="font-bold text-primary mb-1">Our Location</h3>
                 <p className="text-on-surface-variant leading-relaxed">
-                  54, Old Post Office Rd, Near Collector Office,
-                  <br />
-                  Gopalapuram, Coimbatore,
-                  <br />
-                  Tamil Nadu 641018
+                  {HOTEL_ADDRESS}
                 </p>
               </div>
             </div>

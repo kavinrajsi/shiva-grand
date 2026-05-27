@@ -29,7 +29,7 @@ export const HOME_INQUIRY_ROOM_TYPES = [
   "Family Room (₹2,000)",
 ];
 
-function todayISO() {
+export function todayISO() {
   const d = new Date();
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -198,5 +198,33 @@ export function validateHomeInquiry(values) {
     fieldErrors,
     valid: Object.keys(fieldErrors).length === 0,
     data: { name, email, phone, checkIn, checkOut, roomType, notes },
+  };
+}
+
+export function validateQuickInquiry(values) {
+  const fieldErrors = {};
+  const checkIn = (values.checkIn || "").toString().trim();
+  const checkOut = (values.checkOut || "").toString().trim();
+  const guests = (values.guests || "").toString().trim();
+
+  const today = todayISO();
+  if (!checkIn) fieldErrors.checkIn = "Pick a check-in date.";
+  else if (!DATE_RE.test(checkIn)) fieldErrors.checkIn = "Invalid date.";
+  else if (checkIn < today)
+    fieldErrors.checkIn = "Check-in cannot be in the past.";
+
+  if (!checkOut) fieldErrors.checkOut = "Pick a check-out date.";
+  else if (!DATE_RE.test(checkOut)) fieldErrors.checkOut = "Invalid date.";
+  else if (checkIn && DATE_RE.test(checkIn) && checkOut <= checkIn)
+    fieldErrors.checkOut = "Check-out must be after check-in.";
+
+  if (!guests) fieldErrors.guests = "Pick guest count.";
+  else if (!BOOKING_GUESTS.includes(guests))
+    fieldErrors.guests = "Pick a valid option.";
+
+  return {
+    fieldErrors,
+    valid: Object.keys(fieldErrors).length === 0,
+    data: { checkIn, checkOut, guests },
   };
 }

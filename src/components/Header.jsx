@@ -14,6 +14,8 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
 
+  if (pathname?.startsWith("/studio")) return null;
+
   return (
     <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-emerald-900/5">
       <nav className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">

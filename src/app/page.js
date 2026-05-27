@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeInquiryForm from "@/components/HomeInquiryForm";
+import QuickBookingBar from "@/components/QuickBookingBar";
+import { sanityClient } from "@/sanity/client";
+import { urlFor } from "@/sanity/image";
+import { GALLERY_QUERY, TESTIMONIALS_QUERY } from "@/sanity/queries";
+import { HOTEL_ADDRESS, HOTEL_MAPS_URL } from "@/lib/address";
+
+export const revalidate = 60;
 
 export const metadata = {
   title: "Shiva Grand — Hotel in Coimbatore",
@@ -38,57 +45,41 @@ const ROOM_CARDS = [
   },
 ];
 
-const GALLERY = [
+const GALLERY_SIZES = [
+  "w-[300px] md:w-[450px] aspect-[4/3]",
+  "w-[300px] md:w-[350px] aspect-[3/4]",
+  "w-[300px] md:w-[500px] aspect-[16/9]",
+  "w-[300px] md:w-[350px] aspect-square",
+];
+
+const SAMPLE_GALLERY = [
   {
     alt: "Lobby",
-    size: "w-[300px] md:w-[450px] aspect-[4/3]",
+    size: GALLERY_SIZES[0],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxF31nCTdJgHvpNvLMABjwQmzH_ilKeCyxHm_wiCFhI5SjluN4KpDKxHGf20pIvzVkGUKhYBeH90Xga2M9NdXld9bT3wMiD_tKTU9lQYwUjOwWfxVLUVpPhx5nWlJ1vSkPC64faRfmrqAHdnAXLCahlh8OvrCsz-FU4STHC5l_ksNA3B-2aNQhcq84RzY70Yq9LcY3z9GnhXMQaKeeENViSYM1BhdNQmr_T1D9M1xrpe9X3I5NWBV-EQzS1vVSRvChuucq7zMB8QVm",
   },
   {
     alt: "Dining Area",
-    size: "w-[300px] md:w-[350px] aspect-[3/4]",
+    size: GALLERY_SIZES[1],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDpdjSlKJwmaSVhMollGrNmQaUYIk9qimlyktaE-aiGbsbraVKSiP2m6Mzx-HFop5zUjjYOYQDlQvsOWx6pgy1ZQVqyarunEqvgoKgWOatA39Oka7RbLVOuhOXVuNvT0JabA3wn1RcPcWhIQ0MVKI7142v1PZZIGyjTRT0OwMEvu62H7arsHjJE7zN0nW65k0Gi-KFENX71mWvLiBbPyN_nir5Ff6Qt9ylHMp05MCKRSZg7Fm0Ah1XMZh4ebXuzXXEu6ns6iZrObm_B",
   },
   {
     alt: "Corridor",
-    size: "w-[300px] md:w-[500px] aspect-[16/9]",
+    size: GALLERY_SIZES[2],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBV5tEe3XaXxwkffRNQ3_-8zjCOTEdfc_sGbTuj2H48q82zWL8KKtMayz1T_5s7SOmY4knsaaOtQ6hk6-Kf2Gwyc3poCifxcveS6nEdGWDGTV48_cBUMH6E075z_iwxFzfH6S9tgVqt5IG7RGldHnUNUDFFwrJT1WwztSeVveDf0-Q9iAZ8JE1Ft4MB5Cr5iEAqYagFQaF0kzXbh29psVeFeC28lNAgnC2hum542FI8_VsO0DP4g2cAOo6YLmrvAn8wI8r0mElHoBbm",
   },
   {
     alt: "Roof Garden",
-    size: "w-[300px] md:w-[350px] aspect-square",
+    size: GALLERY_SIZES[3],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCuO_8_JQQeuwZb56ZpQPspobyMd0UmLSCq29cClpZR50VdmQPqEgdpCzu0nKbaVYRo7YHshImy17bjokFA2dlNk6sUP1_OxhEWXYjuSAVEHPfUYqO9HP_Y7Hwdnp8--jzrp38P0FVi6SKZSjYnlLQTPGpXcewf1-AyW1u5j5FLZl9RsqK85e7NHm5l_b5WWKbLczux5ra-40RR1TP-lbeNYiSCEKi2E8DrqICelde33ZV08J8Hih7tRJ8uAb-xpCmKZDUeUmDs7BdT",
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    initials: "RK",
-    name: "Rajesh Kumar",
-    label: "Google Reviewer",
-    quote:
-      "Very clean rooms and the location is excellent, just a short walk from the railway station. Great value for money in the city center.",
-  },
-  {
-    initials: "MS",
-    name: "Meera S.",
-    label: "Google Reviewer",
-    quote:
-      "Excellent service and cleanliness. Highly recommended for business travelers needing to be near the collectorate and railway station.",
-  },
-  {
-    initials: "AV",
-    name: "Arjun Varma",
-    label: "Google Reviewer",
-    quote:
-      "The room was spotless. Exceptional location and pricing. Will definitely stay here again on my next trip to Coimbatore.",
-  },
-];
-
-function Stars() {
+function Stars({ count = 5 }) {
+  const safe = Math.max(0, Math.min(5, Math.round(count)));
   return (
     <div className="flex text-yellow-400 mb-4">
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: safe }).map((_, i) => (
         <span key={i} className="material-symbols-outlined fill-1">
           star
         </span>
@@ -97,7 +88,60 @@ function Stars() {
   );
 }
 
-export default function HomePage() {
+const SAMPLE_TESTIMONIALS = [
+  {
+    _id: "sample-rk",
+    name: "Rajesh Kumar",
+    role: "Google Reviewer",
+    rating: 5,
+    quote:
+      "Very clean rooms and the location is excellent, just a short walk from the railway station. Great value for money in the city center.",
+  },
+  {
+    _id: "sample-ms",
+    name: "Meera S.",
+    role: "Google Reviewer",
+    rating: 5,
+    quote:
+      "Excellent service and cleanliness. Highly recommended for business travelers needing to be near the collectorate and railway station.",
+  },
+  {
+    _id: "sample-av",
+    name: "Arjun Varma",
+    role: "Google Reviewer",
+    rating: 5,
+    quote:
+      "The room was spotless. Exceptional location and pricing. Will definitely stay here again on my next trip to Coimbatore.",
+  },
+];
+
+function initialsFor(name) {
+  if (!name) return "";
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase())
+    .slice(0, 2)
+    .join("");
+}
+
+export default async function HomePage() {
+  const [sanityTestimonials, sanityGallery] = await Promise.all([
+    sanityClient.fetch(TESTIMONIALS_QUERY),
+    sanityClient.fetch(GALLERY_QUERY),
+  ]);
+  const testimonials =
+    sanityTestimonials.length > 0 ? sanityTestimonials : SAMPLE_TESTIMONIALS;
+  const gallery =
+    sanityGallery.length > 0
+      ? sanityGallery.map((item, i) => ({
+          key: item._id,
+          src: urlFor(item.image).width(900).url(),
+          alt: item.image?.alt || item.caption || "Facility",
+          size: GALLERY_SIZES[i % GALLERY_SIZES.length],
+        }))
+      : SAMPLE_GALLERY.map((g) => ({ ...g, key: g.alt }));
+
   return (
     <>
       <section className="relative h-[90vh] flex items-center overflow-hidden">
@@ -126,80 +170,20 @@ export default function HomePage() {
             >
               View Rooms
             </Link>
-            <button
-              type="button"
+            <a
+              href={HOTEL_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
             >
               Location Map
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
       <section className="relative z-20 -mt-16 px-6">
-        <form
-          action="/book-you-stay"
-          method="get"
-          className="max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 flex flex-col lg:flex-row gap-8 items-end border border-zinc-100"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="quick-checkIn"
-                className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
-              >
-                Check In
-              </label>
-              <input
-                id="quick-checkIn"
-                name="checkIn"
-                type="date"
-                required
-                className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="quick-checkOut"
-                className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
-              >
-                Check Out
-              </label>
-              <input
-                id="quick-checkOut"
-                name="checkOut"
-                type="date"
-                required
-                className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="quick-guests"
-                className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
-              >
-                Guests
-              </label>
-              <select
-                id="quick-guests"
-                name="guests"
-                defaultValue="2 Guests"
-                className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
-              >
-                <option>1 Guest</option>
-                <option>2 Guests</option>
-                <option>3 Guests</option>
-                <option>4+ Guests</option>
-              </select>
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="w-full lg:w-auto bg-primary text-white px-10 py-4 rounded-lg uppercase tracking-widest text-sm font-bold hover:bg-[#1e4d33] transition-colors whitespace-nowrap"
-          >
-            Enquire Now
-          </button>
-        </form>
+        <QuickBookingBar />
       </section>
 
       <section className="py-24 px-6 bg-surface">
@@ -292,12 +276,12 @@ export default function HomePage() {
                     <span className="text-primary font-bold">{room.price}</span>
                   </div>
                   <p className="text-zinc-500 text-sm mb-6">{room.blurb}</p>
-                  <button
-                    type="button"
-                    className="w-full py-3 bg-zinc-100 text-zinc-800 rounded-lg font-bold text-sm hover:bg-zinc-200 transition-colors"
+                  <Link
+                    href={`/book-you-stay?roomType=${encodeURIComponent(room.title)}`}
+                    className="block w-full text-center py-3 bg-zinc-100 text-zinc-800 rounded-lg font-bold text-sm hover:bg-zinc-200 transition-colors"
                   >
                     {room.cta}
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -313,9 +297,9 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold mt-2">Facility Gallery</h2>
         </div>
         <div className="flex gap-6 overflow-x-auto px-6 no-scrollbar pb-8">
-          {GALLERY.map((g) => (
+          {gallery.map((g) => (
             <div
-              key={g.alt}
+              key={g.key}
               className={`relative flex-none ${g.size} rounded-xl overflow-hidden shadow-md`}
             >
               <Image
@@ -376,24 +360,26 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold mt-2">Guest Testimonials</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t) => (
+            {testimonials.map((t) => (
               <div
-                key={t.name}
+                key={t._id}
                 className="bg-white p-8 rounded-2xl border border-zinc-100 shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <Stars />
+                  <Stars count={t.rating} />
                   <p className="text-zinc-600 italic leading-relaxed mb-6">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">
-                    {t.initials}
+                    {initialsFor(t.name)}
                   </div>
                   <div>
                     <p className="font-bold text-sm">{t.name}</p>
-                    <p className="text-xs text-zinc-400">{t.label}</p>
+                    {t.role ? (
+                      <p className="text-xs text-zinc-400">{t.role}</p>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -439,10 +425,7 @@ export default function HomePage() {
                   <p className="font-bold text-xs uppercase tracking-widest mb-1 text-white/60">
                     Location
                   </p>
-                  <p className="text-white">
-                    54, Old Post Office Rd, Near Collector Office, Gopalapuram,
-                    Coimbatore, Tamil Nadu 641018
-                  </p>
+                  <p className="text-white">{HOTEL_ADDRESS}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
