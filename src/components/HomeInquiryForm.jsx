@@ -20,6 +20,7 @@ function inputCx(touched, error) {
 
 const EMPTY = {
   name: "",
+  email: "",
   phone: "",
   checkIn: "",
   checkOut: "",
@@ -136,6 +137,20 @@ export default function HomeInquiryForm() {
           required
         />
       </div>
+
+      <TextField
+        id="email"
+        label="Email"
+        type="email"
+        placeholder="you@example.com"
+        value={values.email}
+        onChange={(v) => set("email", v)}
+        onBlur={() => markTouched("email")}
+        error={visible.email}
+        touched={Boolean(touched.email)}
+        disabled={isPending}
+        required
+      />
 
       <div className="flex flex-col gap-2">
         <FieldLabel id="roomType" required>

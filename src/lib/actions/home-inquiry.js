@@ -50,6 +50,7 @@ export async function sendHomeInquiry(_prevState, formData) {
 
   const { fieldErrors, valid, data } = validateHomeInquiry({
     name: formData.get("name"),
+    email: formData.get("email"),
     phone: formData.get("phone"),
     checkIn: formData.get("checkIn"),
     checkOut: formData.get("checkOut"),
@@ -63,7 +64,7 @@ export async function sendHomeInquiry(_prevState, formData) {
     const { error: dbError } = await supabase.from("booking_inquiries").insert({
       name: data.name,
       phone: data.phone,
-      email: null,
+      email: data.email,
       check_in: data.checkIn,
       check_out: data.checkOut,
       guests: null,
@@ -91,6 +92,7 @@ export async function sendHomeInquiry(_prevState, formData) {
 
   const safe = {
     name: escapeHtml(data.name),
+    email: escapeHtml(data.email),
     phone: escapeHtml(data.phone),
     checkIn: escapeHtml(formatDate(data.checkIn)),
     checkOut: escapeHtml(formatDate(data.checkOut)),
@@ -106,30 +108,61 @@ export async function sendHomeInquiry(_prevState, formData) {
       <p style="color:#707971;font-size:12px;margin:0 0 16px;">Source: home</p>
       <table style="width:100%;border-collapse:collapse;font-size:14px;">
         <tr><td style="padding:6px 0;color:#404942;width:140px;">Guest</td><td style="padding:6px 0;"><strong>${safe.name}</strong></td></tr>
+        <tr><td style="padding:6px 0;color:#404942;">Email</td><td style="padding:6px 0;"><a href="mailto:${safe.email}">${safe.email}</a></td></tr>
         <tr><td style="padding:6px 0;color:#404942;">Phone</td><td style="padding:6px 0;"><a href="tel:${safe.phone}">${safe.phone}</a></td></tr>
         <tr><td style="padding:6px 0;color:#404942;">Check-in</td><td style="padding:6px 0;"><strong>${safe.checkIn}</strong></td></tr>
         <tr><td style="padding:6px 0;color:#404942;">Check-out</td><td style="padding:6px 0;"><strong>${safe.checkOut}</strong></td></tr>
         <tr><td style="padding:6px 0;color:#404942;">Stay type</td><td style="padding:6px 0;">${safe.roomType}</td></tr>
         <tr><td style="padding:6px 0;color:#404942;vertical-align:top;">Notes</td><td style="padding:6px 0;">${safe.notes}</td></tr>
       </table>
-      <p style="color:#404942;font-size:13px;margin-top:24px;">
-        No email was collected on this form. Reach the guest via the phone number above.
+    </div>
+  `.trim();
+
+  const userHtml = `
+    <div style="font-family:Manrope,Arial,sans-serif;max-width:560px;margin:auto;color:#191c1b;">
+      <h2 style="color:#0d5533;margin:0 0 16px;">Thanks, ${safe.name} — we got your booking inquiry.</h2>
+      <p style="line-height:1.6;color:#404942;">
+        Your reservation is <strong>not yet confirmed</strong>. Our team will call you within 30 minutes to verify availability and finalize the details.
+      </p>
+      <div style="background:#f2f4f2;padding:16px;border-radius:12px;font-size:14px;color:#191c1b;">
+        <p style="margin:0 0 6px;color:#707971;text-transform:uppercase;letter-spacing:0.08em;font-size:11px;">Your request</p>
+        <p style="margin:4px 0;"><strong>Check-in:</strong> ${safe.checkIn}</p>
+        <p style="margin:4px 0;"><strong>Check-out:</strong> ${safe.checkOut}</p>
+        <p style="margin:4px 0;"><strong>Stay type:</strong> ${safe.roomType}</p>
+      </div>
+      <p style="line-height:1.6;color:#404942;margin-top:24px;">
+        For anything urgent, call us on <strong>090477 57777</strong>.
+      </p>
+      <p style="color:#707971;font-size:12px;margin-top:32px;">
+        Shiva Grand Residency · 54, Old Post Office Rd, Gopalapuram, Coimbatore 641018
       </p>
     </div>
   `.trim();
 
   try {
-    const { error: adminError } = await resend.emails.send({
-      from,
-      to: adminTo,
-      cc,
-      bcc,
-      subject: `New home-page inquiry — ${data.name} (${data.checkIn} → ${data.checkOut})`,
-      html: adminHtml,
-    });
+    const [adminResult, userResult] = await Promise.all([
+      resend.emails.send({
+        from,
+        to: adminTo,
+        cc,
+        bcc,
+        replyTo: data.email,
+        subject: `New home-page inquiry — ${data.name} (${data.checkIn} → ${data.checkOut})`,
+        html: adminHtml,
+      }),
+      resend.emails.send({
+        from,
+        to: data.email,
+        subject: "Your booking inquiry is being processed — Shiva Grand",
+        html: userHtml,
+      }),
+    ]);
 
-    if (adminError) {
-      console.error("Resend send error:", JSON.stringify(adminError));
+    if (adminResult.error || userResult.error) {
+      console.error("Resend send error:", {
+        admin: JSON.stringify(adminResult.error),
+        user: JSON.stringify(userResult.error),
+      });
       return { ok: false, error: "Could not send email. Please try again." };
     }
 

@@ -1,5 +1,18 @@
 import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
+import { BOOKING_GUESTS, BOOKING_ROOM_TYPES } from "@/lib/validations";
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+function pickInitial(sp) {
+  const initial = {};
+  if (sp?.checkIn && DATE_RE.test(sp.checkIn)) initial.checkIn = sp.checkIn;
+  if (sp?.checkOut && DATE_RE.test(sp.checkOut)) initial.checkOut = sp.checkOut;
+  if (sp?.guests && BOOKING_GUESTS.includes(sp.guests)) initial.guests = sp.guests;
+  if (sp?.roomType && BOOKING_ROOM_TYPES.includes(sp.roomType))
+    initial.roomType = sp.roomType;
+  return initial;
+}
 
 export const metadata = {
   title: "Book Your Stay — Shiva Grand",
@@ -69,7 +82,9 @@ const LOCATIONS = [
   },
 ];
 
-export default function BookYourStayPage() {
+export default async function BookYourStayPage({ searchParams }) {
+  const sp = await searchParams;
+  const initial = pickInitial(sp);
   return (
     <div className="pt-28">
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
@@ -134,7 +149,7 @@ export default function BookYourStayPage() {
           </div>
 
           <div className="lg:col-span-5 bg-surface-container-lowest p-8 lg:p-10 rounded-3xl shadow-sm border border-outline-variant/10">
-            <BookingForm />
+            <BookingForm initial={initial} />
           </div>
         </div>
       </section>

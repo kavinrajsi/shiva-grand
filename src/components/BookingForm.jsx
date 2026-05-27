@@ -29,13 +29,19 @@ const EMPTY = {
   requests: "",
 };
 
-export default function BookingForm() {
+export default function BookingForm({ initial }) {
   const [state, formAction, isPending] = useActionState(
     sendBookingInquiry,
     null
   );
-  const [values, setValues] = useState(EMPTY);
-  const [touched, setTouched] = useState({});
+  const [values, setValues] = useState({ ...EMPTY, ...(initial || {}) });
+  const [touched, setTouched] = useState(() => {
+    const t = {};
+    for (const key of Object.keys(initial || {})) {
+      if (initial[key]) t[key] = true;
+    }
+    return t;
+  });
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {

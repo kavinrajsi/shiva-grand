@@ -156,6 +156,7 @@ export function validateBookingInquiry(values) {
 export function validateHomeInquiry(values) {
   const fieldErrors = {};
   const name = (values.name || "").toString().trim();
+  const email = (values.email || "").toString().trim();
   const phone = (values.phone || "").toString().trim();
   const checkIn = (values.checkIn || "").toString().trim();
   const checkOut = (values.checkOut || "").toString().trim();
@@ -165,6 +166,12 @@ export function validateHomeInquiry(values) {
   if (!name) fieldErrors.name = "Please enter your name.";
   else if (name.length > BOOKING_LIMITS.name)
     fieldErrors.name = `Keep it under ${BOOKING_LIMITS.name} characters.`;
+
+  if (!email) fieldErrors.email = "Please enter your email.";
+  else if (!EMAIL_RE.test(email))
+    fieldErrors.email = "Enter a valid email address.";
+  else if (email.length > BOOKING_LIMITS.email)
+    fieldErrors.email = `Keep it under ${BOOKING_LIMITS.email} characters.`;
 
   const phoneError = validateBookingPhone(phone);
   if (phoneError) fieldErrors.phone = phoneError;
@@ -190,6 +197,6 @@ export function validateHomeInquiry(values) {
   return {
     fieldErrors,
     valid: Object.keys(fieldErrors).length === 0,
-    data: { name, phone, checkIn, checkOut, roomType, notes },
+    data: { name, email, phone, checkIn, checkOut, roomType, notes },
   };
 }

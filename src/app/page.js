@@ -137,61 +137,69 @@ export default function HomePage() {
       </section>
 
       <section className="relative z-20 -mt-16 px-6">
-        <div className="max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 flex flex-col lg:flex-row gap-8 items-end border border-zinc-100">
+        <form
+          action="/book-you-stay"
+          method="get"
+          className="max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 flex flex-col lg:flex-row gap-8 items-end border border-zinc-100"
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             <div className="flex flex-col gap-2">
               <label
-                htmlFor="check-in"
+                htmlFor="quick-checkIn"
                 className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
               >
                 Check In
               </label>
               <input
-                id="check-in"
-                name="check-in"
+                id="quick-checkIn"
+                name="checkIn"
                 type="date"
+                required
                 className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
               />
             </div>
             <div className="flex flex-col gap-2">
               <label
-                htmlFor="check-out"
+                htmlFor="quick-checkOut"
                 className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
               >
                 Check Out
               </label>
               <input
-                id="check-out"
-                name="check-out"
+                id="quick-checkOut"
+                name="checkOut"
                 type="date"
+                required
                 className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
               />
             </div>
             <div className="flex flex-col gap-2">
               <label
-                htmlFor="guests"
+                htmlFor="quick-guests"
                 className="uppercase tracking-widest text-[10px] font-bold text-zinc-500"
               >
                 Guests
               </label>
               <select
-                id="guests"
+                id="quick-guests"
                 name="guests"
+                defaultValue="2 Guests"
                 className="w-full border-zinc-200 rounded-lg py-3 focus:ring-primary focus:border-primary"
               >
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>Family Room</option>
+                <option>1 Guest</option>
+                <option>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4+ Guests</option>
               </select>
             </div>
           </div>
           <button
-            type="button"
+            type="submit"
             className="w-full lg:w-auto bg-primary text-white px-10 py-4 rounded-lg uppercase tracking-widest text-sm font-bold hover:bg-[#1e4d33] transition-colors whitespace-nowrap"
           >
             Enquire Now
           </button>
-        </div>
+        </form>
       </section>
 
       <section className="py-24 px-6 bg-surface">
@@ -445,7 +453,14 @@ export default function HomePage() {
                   <p className="font-bold text-xs uppercase tracking-widest mb-1 text-white/60">
                     Direct Line
                   </p>
-                  <p className="text-white">090477 57777</p>
+                  <p>
+                    <a
+                      href="tel:+919047757777"
+                      className="text-white hover:underline"
+                    >
+                      090477 57777
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
