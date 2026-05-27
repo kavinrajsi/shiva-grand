@@ -1,0 +1,29 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/postcss": "^4.3.0",
+    "material-symbols": "^0.44.9",
+    "next": "16.2.6",
+    "postcss": "^8.5.15",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.12.4",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6"
+  }
+}
