@@ -47,7 +47,7 @@ export default function Header() {
         </div>
 
         <Link
-          href="/booking"
+          href="/book-you-stay"
           className="inline-block text-center bg-emerald-900 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-emerald-800 active:scale-95 transition-all"
         >
           Book Now
