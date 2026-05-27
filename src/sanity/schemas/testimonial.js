@@ -43,6 +43,14 @@ export default {
       type: "boolean",
       initialValue: true,
     },
+    {
+      name: "featuredOnBlog",
+      title: "Featured on Blog hero",
+      type: "boolean",
+      description:
+        "If multiple are flagged, the first by display order is used.",
+      initialValue: false,
+    },
   ],
   orderings: [
     {

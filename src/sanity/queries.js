@@ -47,6 +47,14 @@ export const TESTIMONIALS_QUERY = `*[_type == "testimonial" && (published == tru
   rating
 }`;
 
+// The single testimonial flagged for the Blog hero card.
+export const BLOG_HERO_TESTIMONIAL_QUERY = `*[_type == "testimonial" && featuredOnBlog == true && (published == true || !defined(published))] | order(coalesce(order, 9999) asc, _createdAt desc)[0] {
+  _id,
+  name,
+  role,
+  quote
+}`;
+
 // Two related posts, excluding the current one.
 export const RELATED_POSTS_QUERY = `*[_type == "post" && slug.current != $slug && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc)[0...2] {
   _id,
