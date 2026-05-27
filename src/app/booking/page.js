@@ -1,9 +1,18 @@
 import Image from "next/image";
-import { HOTEL_ADDRESS } from "@/lib/address";
+import {
+  HOTEL_ADDRESS,
+  HOTEL_PHONE_DISPLAY,
+  HOTEL_PHONE_TEL,
+} from "@/lib/address";
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "Booking Pending — Shiva Grand",
-  description: "Your reservation request has been received. We'll call you shortly to confirm.",
+  title: "Booking Pending Confirmation",
+  description:
+    "Your reservation request has been received. Our team will call you within 30 minutes to confirm availability and finalize your stay.",
+  alternates: { canonical: "/booking" },
+  robots: { index: false, follow: true },
 };
 
 const SUMMARY = [
@@ -34,6 +43,14 @@ const STEPS = [
 export default function BookingPage() {
   return (
     <div className="pt-32 pb-20">
+      <JsonLd
+        data={webPageSchema({
+          path: "/booking",
+          name: "Booking Pending — Shiva Grand Residency",
+          description:
+            "Your reservation request has been received. We'll call you within 30 minutes to confirm.",
+        })}
+      />
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative h-[500px] lg:h-[650px] rounded-full overflow-hidden">
@@ -137,11 +154,11 @@ export default function BookingPage() {
               </p>
               <div className="space-y-4">
                 <a
-                  href="tel:09047757777"
+                  href={`tel:${HOTEL_PHONE_TEL}`}
                   className="flex items-center gap-4 hover:translate-x-2 transition-transform"
                 >
                   <span className="material-symbols-outlined">call</span>
-                  <span className="font-medium">090477 57777</span>
+                  <span className="font-medium">{HOTEL_PHONE_DISPLAY}</span>
                 </a>
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined">location_on</span>

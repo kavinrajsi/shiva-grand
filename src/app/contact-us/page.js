@@ -1,15 +1,44 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
-import { HOTEL_ADDRESS } from "@/lib/address";
+import {
+  HOTEL_ADDRESS,
+  HOTEL_PHONE_DISPLAY,
+  HOTEL_PHONE_TEL,
+} from "@/lib/address";
+import JsonLd from "@/components/JsonLd";
+import { contactPageSchema, webPageSchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "Contact Us — Shiva Grand",
-  description: "Get in touch with Shiva Grand Residency, Coimbatore.",
+  title: "Contact Us — Get in Touch",
+  description:
+    "Reach Shiva Grand Residency, Coimbatore by phone, email or our enquiry form. Located at 54 Old Post Office Rd, Gopalapuram, near the railway station.",
+  alternates: { canonical: "/contact-us" },
+  openGraph: {
+    title: "Contact Shiva Grand Residency",
+    description:
+      "Reach us by phone (+91 90477 57777), email, or our enquiry form.",
+    url: "/contact-us",
+  },
 };
 
 export default function ContactUsPage() {
   return (
     <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/contact-us",
+            name: "Contact Shiva Grand Residency",
+            description:
+              "Reach Shiva Grand Residency, Coimbatore by phone, email or our enquiry form.",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Contact", path: "/contact-us" },
+            ],
+          }),
+          contactPageSchema(),
+        ]}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-5 space-y-12">
           <div className="space-y-4">
@@ -45,10 +74,10 @@ export default function ContactUsPage() {
                 <h3 className="font-bold text-primary mb-1">Phone Number</h3>
                 <p>
                   <a
-                    href="tel:+919047757777"
+                    href={`tel:${HOTEL_PHONE_TEL}`}
                     className="text-on-surface-variant hover:text-primary transition-colors"
                   >
-                    090477 57777
+                    {HOTEL_PHONE_DISPLAY}
                   </a>
                 </p>
               </div>

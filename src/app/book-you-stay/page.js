@@ -2,6 +2,8 @@ import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
 import { BOOKING_GUESTS, BOOKING_ROOM_TYPES } from "@/lib/validations";
 import { HOTEL_MAPS_URL } from "@/lib/address";
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -16,8 +18,16 @@ function pickInitial(sp) {
 }
 
 export const metadata = {
-  title: "Book Your Stay — Shiva Grand",
-  description: "Reserve a room at Shiva Grand Residency, Coimbatore.",
+  title: "Book Your Stay — Rooms in Coimbatore",
+  description:
+    "Reserve your room at Shiva Grand Residency, Coimbatore. Standard Double, Deluxe AC, or Premium Family — no upfront payment, free cancellation up to 24h.",
+  alternates: { canonical: "/book-you-stay" },
+  openGraph: {
+    title: "Book Your Stay — Shiva Grand Residency",
+    description:
+      "Reserve a Standard Double, Deluxe AC, or Premium Family room. No upfront payment, free cancellation up to 24h.",
+    url: "/book-you-stay",
+  },
 };
 
 const ROOMS = [
@@ -88,6 +98,18 @@ export default async function BookYourStayPage({ searchParams }) {
   const initial = pickInitial(sp);
   return (
     <div className="pt-28">
+      <JsonLd
+        data={webPageSchema({
+          path: "/book-you-stay",
+          name: "Book Your Stay — Shiva Grand Residency",
+          description:
+            "Reserve a Standard Double, Deluxe AC, or Premium Family room. No upfront payment, free cancellation up to 24h.",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Rooms & Booking", path: "/book-you-stay" },
+          ],
+        })}
+      />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 space-y-8">

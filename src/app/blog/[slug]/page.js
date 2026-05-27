@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { PortableText } from "next-sanity";
 import { sanityClient } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
+import JsonLd from "@/components/JsonLd";
+import { blogPostingSchema, webPageSchema } from "@/lib/schema";
 import {
   POST_BY_SLUG_QUERY,
   POST_SLUGS_QUERY,
@@ -20,10 +22,37 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await sanityClient.fetch(POST_BY_SLUG_QUERY, { slug });
-  if (!post) return { title: "Post not found — Shiva Grand" };
+  if (!post) {
+    return {
+      title: "Post not found",
+      robots: { index: false, follow: true },
+    };
+  }
+  const canonical = `/blog/${slug}`;
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : undefined;
   return {
-    title: `${post.title} — Shiva Grand`,
+    title: post.title,
     description: post.excerpt || undefined,
+    alternates: { canonical },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt || undefined,
+      url: canonical,
+      publishedTime: post.publishedAt || undefined,
+      authors: post.author?.name ? [post.author.name] : undefined,
+      images: imageUrl
+        ? [{ url: imageUrl, width: 1200, height: 630 }]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt || undefined,
+      images: imageUrl ? [imageUrl] : undefined,
+    },
   };
 }
 
@@ -113,8 +142,34 @@ export default async function BlogDetailPage({ params }) {
 
   if (!post) notFound();
 
+  const postImage = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : undefined;
+
   return (
     <div className="pt-20">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: `/blog/${slug}`,
+            name: post.title,
+            description: post.excerpt,
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+              { name: post.title, path: `/blog/${slug}` },
+            ],
+          }),
+          blogPostingSchema({
+            title: post.title,
+            slug,
+            description: post.excerpt,
+            imageUrl: postImage,
+            publishedAt: post.publishedAt,
+            authorName: post.author?.name,
+          }),
+        ]}
+      />
       <header className="relative w-full h-[716px] flex items-end overflow-hidden">
         {post.mainImage ? (
           <Image

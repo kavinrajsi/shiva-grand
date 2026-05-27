@@ -5,7 +5,7 @@ import { Resend } from "resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateContact } from "@/lib/validations";
-import { HOTEL_ADDRESS } from "@/lib/address";
+import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY } from "@/lib/address";
 
 function escapeHtml(str) {
   return String(str)
@@ -106,7 +106,7 @@ export async function sendContactMessage(_prevState, formData) {
         ${safe.message}
       </div>
       <p style="line-height:1.6;color:#404942;margin-top:24px;">
-        For anything urgent, call us on <strong>090477 57777</strong>.
+        For anything urgent, call us on <strong>${HOTEL_PHONE_DISPLAY}</strong>.
       </p>
       <p style="color:#707971;font-size:12px;margin-top:32px;">
         Shiva Grand Residency · ${HOTEL_ADDRESS}

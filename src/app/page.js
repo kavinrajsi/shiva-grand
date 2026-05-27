@@ -5,13 +5,30 @@ import QuickBookingBar from "@/components/QuickBookingBar";
 import { sanityClient } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
 import { GALLERY_QUERY, TESTIMONIALS_QUERY } from "@/sanity/queries";
-import { HOTEL_ADDRESS, HOTEL_MAPS_URL } from "@/lib/address";
+import JsonLd from "@/components/JsonLd";
+import { reservationActionSchema, webPageSchema } from "@/lib/schema";
+import {
+  HOTEL_ADDRESS,
+  HOTEL_MAPS_URL,
+  HOTEL_PHONE_DISPLAY,
+  HOTEL_PHONE_TEL,
+} from "@/lib/address";
 
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Shiva Grand — Hotel in Coimbatore",
-  description: "A Comfortable Stay, Every Time.",
+  title: {
+    absolute: "Shiva Grand Residency — Hotel in Coimbatore | Rooms from ₹1,500",
+  },
+  description:
+    "Comfortable, clean hotel rooms in Coimbatore. 5 minutes from the railway station, walking distance to the Collectorate. Standard, Deluxe AC, and Family rooms from ₹1,500.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Shiva Grand Residency — Hotel in Coimbatore | Rooms from ₹1,500",
+    description:
+      "Comfortable, clean hotel rooms in Coimbatore. 5 minutes from the railway station, walking distance to the Collectorate.",
+    url: "/",
+  },
 };
 
 const ROOM_CARDS = [
@@ -144,6 +161,17 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/",
+            name: "Shiva Grand Residency — Hotel in Coimbatore",
+            description:
+              "Comfortable, clean hotel rooms in Coimbatore. 5 minutes from the railway station, walking distance to the Collectorate.",
+          }),
+          reservationActionSchema(),
+        ]}
+      />
       <section className="relative h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -438,10 +466,10 @@ export default async function HomePage() {
                   </p>
                   <p>
                     <a
-                      href="tel:+919047757777"
+                      href={`tel:${HOTEL_PHONE_TEL}`}
                       className="text-white hover:underline"
                     >
-                      090477 57777
+                      {HOTEL_PHONE_DISPLAY}
                     </a>
                   </p>
                 </div>

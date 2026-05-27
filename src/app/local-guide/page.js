@@ -1,10 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "Local Guide — Shiva Grand",
+  title: "Coimbatore Local Guide — Things to Do",
   description:
-    "Things to see, eat, and do around Coimbatore — curated by Shiva Grand Residency.",
+    "Marudhamalai Temple, VOC Park, Brookefields Mall, Perur Pateeswarar Temple and more — a curated guide to Coimbatore's sights, food, and travel tips, all within reach of Shiva Grand.",
+  alternates: { canonical: "/local-guide" },
+  openGraph: {
+    title: "Coimbatore Local Guide — Shiva Grand Residency",
+    description:
+      "Temples, parks, shopping, and food — a curated walking guide to Coimbatore.",
+    url: "/local-guide",
+  },
 };
 
 const TIPS = [
@@ -34,6 +43,18 @@ const MAP_ROWS = [
 export default function LocalGuidePage() {
   return (
     <div className="pt-20">
+      <JsonLd
+        data={webPageSchema({
+          path: "/local-guide",
+          name: "Coimbatore Local Guide — Shiva Grand Residency",
+          description:
+            "Temples, parks, shopping, and food around Coimbatore — curated by Shiva Grand Residency.",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Local Guide", path: "/local-guide" },
+          ],
+        })}
+      />
       <section className="py-16 bg-surface-container-low border-b border-outline-variant/10">
         <div className="max-w-7xl mx-auto px-8">
           <span className="label-md text-primary font-bold tracking-[0.2em] uppercase mb-4 block">

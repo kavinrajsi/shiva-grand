@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HOTEL_ADDRESS } from "@/lib/address";
+import {
+  HOTEL_ADDRESS,
+  HOTEL_PHONE_DISPLAY,
+  HOTEL_PHONE_TEL,
+} from "@/lib/address";
 
 const QUICK_LINKS = [
   { href: "/book-you-stay", label: "Rooms" },
@@ -57,10 +61,10 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">call</span>
               <a
-                href="tel:+919047757777"
+                href={`tel:${HOTEL_PHONE_TEL}`}
                 className="hover:text-white transition-colors"
               >
-                090477 57777
+                {HOTEL_PHONE_DISPLAY}
               </a>
             </li>
           </ul>

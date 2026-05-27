@@ -3,13 +3,22 @@ import Link from "next/link";
 import { sanityClient } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
 import { BLOG_HERO_TESTIMONIAL_QUERY, POSTS_QUERY } from "@/sanity/queries";
+import JsonLd from "@/components/JsonLd";
+import { blogSchema, webPageSchema } from "@/lib/schema";
 
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Blog — Shiva Grand",
+  title: "Blog — The Residency Journal",
   description:
-    "The Residency Journal — stories, travel tips, and guest experiences from Shiva Grand Residency, Coimbatore.",
+    "Stories, travel tips, hidden gems, and guest experiences from Shiva Grand Residency in the heart of Coimbatore.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "The Residency Journal — Shiva Grand Blog",
+    description:
+      "Stories, travel tips, and guest experiences from Shiva Grand Residency, Coimbatore.",
+    url: "/blog",
+  },
 };
 
 const SAMPLE_POSTS = [
@@ -143,6 +152,21 @@ export default async function BlogPage() {
 
   return (
     <div className="pt-32 pb-20">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/blog",
+            name: "Blog — The Residency Journal",
+            description:
+              "Stories, travel tips, hidden gems, and guest experiences from Shiva Grand Residency.",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+            ],
+          }),
+          blogSchema(),
+        ]}
+      />
       <section className="max-w-7xl mx-auto px-6 mb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-7">

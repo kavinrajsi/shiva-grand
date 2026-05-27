@@ -1,0 +1,24 @@
+# Shiva Grand Residency
+
+> A clean, comfortable hotel in the heart of Coimbatore, Tamil Nadu. 5 minutes from the Coimbatore Junction railway station, walking distance to the Collectorate, and a short drive from Coimbatore International Airport (CJB). Rooms from ₹1,500 per night.
+
+Contact: +91 90477 57777 · 54, Old Post Office Rd, Near Collector Office, Gopalapuram, Coimbatore, Tamil Nadu 641018
+
+## Pages
+
+- [Home](https://shivagrand.com/): Hero, rooms overview, gallery, testimonials, reservation inquiry form.
+- [Rooms & Booking](https://shivagrand.com/book-you-stay): Room categories (Standard Double, Deluxe AC, Premium Family) with the reservation form. No upfront payment, free cancellation up to 24h.
+- [Coimbatore Local Guide](https://shivagrand.com/local-guide): Curated attractions (Marudhamalai Temple, VOC Park, Brookefields Mall, Perur Pateeswarar Temple) and traveler's handbook.
+- [Blog — The Residency Journal](https://shivagrand.com/blog): Stories, travel tips, hidden gems, and guest experiences.
+- [Contact Us](https://shivagrand.com/contact-us): Phone, location map, and an inquiry form.
+
+## Rooms
+
+- Standard Double — ₹1,500. Solo travelers or couples; free Wi-Fi, non-AC.
+- Deluxe AC — ₹1,850. Climate control + premium workspace; free Wi-Fi.
+- Premium Family — ₹2,000. Up to 4 adults; smart TV.
+
+## Optional
+
+- [Sitemap](https://shivagrand.com/sitemap.xml)
+- [Full content for LLMs](https://shivagrand.com/llms-full.txt)
