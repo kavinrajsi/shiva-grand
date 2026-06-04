@@ -74,21 +74,21 @@ export function hotelSchema() {
     makesOffer: [
       {
         "@type": "Offer",
-        name: "Standard Double",
+        name: "Deluxe Room",
         price: "1500",
         priceCurrency: "INR",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
-        name: "Deluxe AC",
+        name: "Deluxe Room - Twin Bed",
         price: "1850",
         priceCurrency: "INR",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
-        name: "Premium Family",
+        name: "Suite Room",
         price: "2000",
         priceCurrency: "INR",
         availability: "https://schema.org/InStock",

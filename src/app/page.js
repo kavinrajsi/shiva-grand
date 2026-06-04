@@ -21,7 +21,7 @@ export const metadata = {
     absolute: "Shiva Grand Residency — Hotel in Coimbatore | Rooms from ₹1,500",
   },
   description:
-    "Comfortable, clean hotel rooms in Coimbatore. 5 minutes from the railway station, walking distance to the Collectorate. Standard, Deluxe AC, and Family rooms from ₹1,500.",
+    "Comfortable, clean hotel rooms in Coimbatore. 5 minutes from the railway station, walking distance to the Collectorate. Deluxe, Twin Bed, and Suite rooms from ₹1,500.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Shiva Grand Residency — Hotel in Coimbatore | Rooms from ₹1,500",
@@ -33,32 +33,33 @@ export const metadata = {
 
 const ROOM_CARDS = [
   {
-    title: "Standard Double",
+    title: "Deluxe Room",
     price: "₹1,500",
     blurb:
-      "Perfect for solo travelers or couples needing a comfortable pitstop.",
-    cta: "Book Standard",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCoaHAylQeH7kicD7prK7Q15mhGp3hFaebiudTMZFrrWPCzQGhSmZyrwKtHf02OqA6CSKtDCAOdJU3R_rDsDz7CfxFhfV5zO3kG39dSmoh8dLEhYYzUMG-OXCuq53RJTX4X1x4TwEJJqfboOcgsCKs8u0iTOJfpOxsi8EhUaW9-OHC0HlhfzdWNmHBbano6h9L2lti91itWVc1WR8Nr0r77BMbGmxPbUi5o50jxyoWV_wznz9Jq5qHETBsK6NiXMLT8bKs5GGKI-XM7",
-    alt: "Standard Double Room",
-  },
-  {
-    title: "Deluxe AC",
-    price: "₹1,850",
-    blurb: "Enhanced comfort with climate control and premium workspace.",
+      "Spacious comfort with modern amenities for a relaxing and productive stay.",
     cta: "Book Deluxe",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCU9rqlVfSpasG92DxbJwWHHdf1Ch2EIxgd8jj2uFnKB6CSPuJVHuPmkncSfotMsZZVOe50LFXBAzP3usAYU6Sp-HVwgWJQR_AYh7UGTpRxeU7qAQ9tFNMGXWmhcsDorUdqrzJs3Gb_clF9OaKJM4Wfneo_GsOnHhoYc-zCpoAuvCIOulqp_RKQ9grqlJUnpvyrEg2_m2O6OZOUwe8sS-BcWArQtvfskuze0gxz2ebwukI5JwYzkejbtX8pZP__1bR9e8_LmQL85Yvc",
-    alt: "Deluxe AC Room",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCoaHAylQeH7kicD7prK7Q15mhGp3hFaebiudTMZFrrWPCzQGhSmZyrwKtHf02OqA6CSKtDCAOdJU3R_rDsDz7CfxFhfV5zO3kG39dSmoh8dLEhYYzUMG-OXCuq53RJTX4X1x4TwEJJqfboOcgsCKs8u0iTOJfpOxsi8EhUaW9-OHC0HlhfzdWNmHBbano6h9L2lti91itWVc1WR8Nr0r77BMbGmxPbUi5o50jxyoWV_wznz9Jq5qHETBsK6NiXMLT8bKs5GGKI-XM7",
+    alt: "Deluxe Room",
   },
   {
-    title: "Premium Family",
+    title: "Deluxe Room - Twin Bed",
+    price: "₹1,850",
+    blurb:
+      "Thoughtfully designed twin-bed accommodation, ideal for friends, colleagues, or shared stays.",
+    cta: "Book Twin Bed",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCU9rqlVfSpasG92DxbJwWHHdf1Ch2EIxgd8jj2uFnKB6CSPuJVHuPmkncSfotMsZZVOe50LFXBAzP3usAYU6Sp-HVwgWJQR_AYh7UGTpRxeU7qAQ9tFNMGXWmhcsDorUdqrzJs3Gb_clF9OaKJM4Wfneo_GsOnHhoYc-zCpoAuvCIOulqp_RKQ9grqlJUnpvyrEg2_m2O6OZOUwe8sS-BcWArQtvfskuze0gxz2ebwukI5JwYzkejbtX8pZP__1bR9e8_LmQL85Yvc",
+    alt: "Deluxe Room - Twin Bed",
+  },
+  {
+    title: "Suite Room",
     price: "₹2,000",
     blurb: "Spacious accommodation for families visiting the city center.",
-    cta: "Book Family",
+    cta: "Book Suite",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDWe27OqclQsyp-MN4OKuHSIaicLDsnQEOZyAE9lntsvji59QLA-sGPbdUh_U_8Pz1LNEz5KxcjZETNmzQoKoqGG8aiBdQ3xue9Bm0wsl3VLUZyJdZyQ3PsfkvI6KRJ1LWpaMq1ZAUDLHt2gHCGB4XnujdezWlTueuH63NeqiioEJCl5WTqevbaUFH27IDyS2A3hVfd2P_FcrOBna3d5EyFhGcYlhK7SV1Es83M7-Wsl8BefX6rqidTLFHhD2hy-puUDIYU5ryrbqHh",
-    alt: "Premium Family Room",
+    alt: "Suite Room",
   },
 ];
 
@@ -260,12 +261,6 @@ export default async function HomePage() {
                 sizes="(min-width: 1024px) 41vw, 100vw"
                 className="object-cover"
               />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-zinc-100 hidden sm:block">
-              <p className="text-primary font-extrabold text-3xl">₹1,500+</p>
-              <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">
-                Starting Price / Night
-              </p>
             </div>
           </div>
         </div>

@@ -18,15 +18,15 @@ export const BOOKING_LIMITS = {
 
 export const BOOKING_GUESTS = ["1 Guest", "2 Guests", "3 Guests", "4+ Guests"];
 export const BOOKING_ROOM_TYPES = [
-  "Standard Double",
-  "Deluxe AC",
-  "Premium Family",
+  "Deluxe Room",
+  "Deluxe Room - Twin Bed",
+  "Suite Room",
 ];
 
 export const HOME_INQUIRY_ROOM_TYPES = [
-  "Standard Double (₹1,500)",
-  "Deluxe AC (₹1,850)",
-  "Family Room (₹2,000)",
+  "Deluxe Room (₹1,500)",
+  "Deluxe Room - Twin Bed (₹1,850)",
+  "Suite Room (₹2,000)",
 ];
 
 export function todayISO() {

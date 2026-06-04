@@ -20,54 +20,54 @@ function pickInitial(sp) {
 export const metadata = {
   title: "Book Your Stay — Rooms in Coimbatore",
   description:
-    "Reserve your room at Shiva Grand Residency, Coimbatore. Standard Double, Deluxe AC, or Premium Family — no upfront payment, free cancellation up to 24h.",
+    "Reserve your room at Shiva Grand Residency, Coimbatore. Deluxe Room, Deluxe Room - Twin Bed, or Suite Room — no upfront payment, free cancellation up to 24h.",
   alternates: { canonical: "/book-you-stay" },
   openGraph: {
     title: "Book Your Stay — Shiva Grand Residency",
     description:
-      "Reserve a Standard Double, Deluxe AC, or Premium Family room. No upfront payment, free cancellation up to 24h.",
+      "Reserve a Deluxe Room, Deluxe Room - Twin Bed, or Suite Room room. No upfront payment, free cancellation up to 24h.",
     url: "/book-you-stay",
   },
 };
 
 const ROOMS = [
   {
-    title: "Standard Double",
+    title: "Deluxe Room",
     badge: "Standard",
     badgeStyle: "bg-white/80 text-primary",
     blurb:
       "Perfect for solo travelers or couples seeking a quiet retreat.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuB8KHTiQVTOog-9_Rok5v_lrnzM8aHMIoALDnVkb5K1dmNp0sqJg5HVmu-NwV5oDb6YxRlSMiQVyGPWSCKvdMnHg15YETGIZnR2bgvPjkvZ9osDCvWkIZJCEAXPBcUnTaj1PAH_0HM3KixSq2TfNjvfw99gA2YE9uAy0PxhO_60TwDTRLK1FGqitlzzIGnmtkwsMeweVgIdrG5XQO8_rG4k9l7n8OxBjd4foqX1MxDfdUQj2LfgxoJ8jeiI4j9ym0MaBzwfIi5brIOq",
-    alt: "Standard Double Room",
+    alt: "Deluxe Room",
     features: [
       { icon: "wifi", label: "Free Wifi" },
       { icon: "ac_unit", label: "Non-AC" },
     ],
   },
   {
-    title: "Deluxe AC",
+    title: "Deluxe Room - Twin Bed",
     badge: "Most Popular",
     badgeStyle: "bg-secondary/80 text-on-primary",
     blurb:
       "Spacious interiors with premium amenities for the modern guest.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBZLuQ5lCT22yd5ejTUAbgipYSuBPv4r4UPyVPevFYCcRZwm_lSQn8Zd8DHRyzbp4E4NX6cHJsEnRlbND8_ttXF1nEQcsOjMV38FinviCAdKp62fIRg7ceV3xowH8dS0-pQ7pSecOnxM_rmUSTqgZoGuojbsP9Ceo47uWKf9B4vQ24RS1KttLUf9gMDIKKFP1w7c_BSjo7O66u-7incPNZxz2QCOyi0EOMXVHPg0Ofe_W4ip8mSH3xhLecMwp_uswCSjxUzJz8ateHf",
-    alt: "Deluxe AC Room",
+    alt: "Deluxe Room - Twin Bed",
     features: [
       { icon: "wifi", label: "Free Wifi" },
       { icon: "ac_unit", label: "Climate Control" },
     ],
   },
   {
-    title: "Premium Family",
+    title: "Suite Room",
     badge: "Premium",
     badgeStyle: "bg-white/80 text-primary",
     blurb:
       "Designed for families who value space, luxury, and togetherness.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuARCVTykjNdNaZaZt7n_abtgj-5GKIVfsSvgMm5-9Ey1rtx6jM6AfJnw-EqQzctrBA1pRy14G5lXpMxPvAZXE8jWmqvIzoEl8hcSSzMgdjpl1isyWyKe12ClD7LFXW-tvHopexuzXOwKf-rxKvCh0ACilfURdEFhI9DPFEB9O5KM5Aqri87IIkVRdXH3iUTxuHHegcSMz_YsaXUnRLnhROWFRH3ENefg7nKvs9P-ZDI7M2Lkq0vr2Bxx2v_obD4tw-umuEmNbCcsDEN",
-    alt: "Premium Family Suite",
+    alt: "Suite Room",
     features: [
       { icon: "group", label: "4 Adults" },
       { icon: "tv", label: "Smart TV" },
@@ -103,7 +103,7 @@ export default async function BookYourStayPage({ searchParams }) {
           path: "/book-you-stay",
           name: "Book Your Stay — Shiva Grand Residency",
           description:
-            "Reserve a Standard Double, Deluxe AC, or Premium Family room. No upfront payment, free cancellation up to 24h.",
+            "Reserve a Deluxe Room, Deluxe Room - Twin Bed, or Suite Room room. No upfront payment, free cancellation up to 24h.",
           breadcrumbs: [
             { name: "Home", path: "/" },
             { name: "Rooms & Booking", path: "/book-you-stay" },
@@ -128,7 +128,7 @@ export default async function BookYourStayPage({ searchParams }) {
                     Selected Room
                   </p>
                   <p className="text-lg font-bold text-primary">
-                    Deluxe AC Room
+                    Deluxe Room - Twin Bed
                   </p>
                 </div>
               </div>
@@ -146,12 +146,12 @@ export default async function BookYourStayPage({ searchParams }) {
                   <select
                     id="room-category"
                     name="room-category"
-                    defaultValue="Deluxe AC"
+                    defaultValue="Deluxe Room - Twin Bed"
                     className="w-full bg-white bg-none border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary pl-4 pr-12 py-3 text-sm appearance-none cursor-pointer"
                   >
-                    <option>Standard Double</option>
-                    <option>Deluxe AC</option>
-                    <option>Premium Family</option>
+                    <option>Deluxe Room</option>
+                    <option>Deluxe Room - Twin Bed</option>
+                    <option>Suite Room</option>
                     <option>Executive Suite</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">

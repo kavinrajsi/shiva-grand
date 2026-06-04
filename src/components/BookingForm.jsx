@@ -25,7 +25,7 @@ const EMPTY = {
   checkIn: "",
   checkOut: "",
   guests: "2 Guests",
-  roomType: "Deluxe AC",
+  roomType: "Deluxe Room - Twin Bed",
   requests: "",
 };
 
