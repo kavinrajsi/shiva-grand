@@ -182,31 +182,6 @@ export default async function BlogPage() {
               guest experiences from our urban sanctuary.
             </p>
           </div>
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
-              <div className="absolute -right-10 -top-10 opacity-10">
-                <span className="material-symbols-outlined text-[12rem]">
-                  eco
-                </span>
-              </div>
-              <p className="relative z-10 text-on-surface-variant italic font-medium">
-                &ldquo;{heroTestimonial.quote}&rdquo;
-              </p>
-              <div className="mt-4 flex items-center gap-3 relative z-10">
-                <div className="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold">
-                  {initialsFor(heroTestimonial.name)}
-                </div>
-                <div>
-                  <p className="text-sm font-bold">{heroTestimonial.name}</p>
-                  {heroTestimonial.role ? (
-                    <p className="text-xs text-on-surface-variant">
-                      {heroTestimonial.role}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

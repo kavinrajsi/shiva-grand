@@ -255,7 +255,7 @@ export default async function HomePage() {
           <div className="relative">
             <div className="relative aspect-square bg-zinc-200 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIg12etvWx7wlL2FkymG0byyjhFQ4Vobv1p2irG7WBYHMaghEAbrGSBKXRlgsTg9UfZ2GVW4ZFbYCmTslDgtObnzqFzBzEREoaaqT00MPHFll60fna6nhq0ypUTkwk43xvNSXk8sMoydTlIur3BLlJxbH7C2wfpWnR6cxTwpCC1ox_rqpBaI0_4q5I-mZn9F_zGT5hZTdHAZy5osDXvV6DscSYaL9eS_u8J2zk-iJ6rDssFtlBofYUzeEjtpe97DnS2X6aL9crbydq"
+                src="/perfectly-located-for-business-travel.jpeg"
                 alt="Modern Room Interior"
                 fill
                 sizes="(min-width: 1024px) 41vw, 100vw"
@@ -363,7 +363,7 @@ export default async function HomePage() {
           <div className="flex-1 w-full">
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpdjSlKJwmaSVhMollGrNmQaUYIk9qimlyktaE-aiGbsbraVKSiP2m6Mzx-HFop5zUjjYOYQDlQvsOWx6pgy1ZQVqyarunEqvgoKgWOatA39Oka7RbLVOuhOXVuNvT0JabA3wn1RcPcWhIQ0MVKI7142v1PZZIGyjTRT0OwMEvu62H7arsHjJE7zN0nW65k0Gi-KFENX71mWvLiBbPyN_nir5Ff6Qt9ylHMp05MCKRSZg7Fm0Ah1XMZh4ebXuzXXEu6ns6iZrObm_B"
+                src="/best-spots-to-eat-in-coimbatore.jpeg"
                 alt="Coimbatore Local Cuisine"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
