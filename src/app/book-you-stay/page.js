@@ -15,12 +15,12 @@ const BADGE_STYLES = {
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
-function pickInitial(sp) {
+function pickInitial(sp, roomTypes = BOOKING_ROOM_TYPES) {
   const initial = {};
   if (sp?.checkIn && DATE_RE.test(sp.checkIn)) initial.checkIn = sp.checkIn;
   if (sp?.checkOut && DATE_RE.test(sp.checkOut)) initial.checkOut = sp.checkOut;
   if (sp?.guests && BOOKING_GUESTS.includes(sp.guests)) initial.guests = sp.guests;
-  if (sp?.roomType && BOOKING_ROOM_TYPES.includes(sp.roomType))
+  if (sp?.roomType && roomTypes.includes(sp.roomType))
     initial.roomType = sp.roomType;
   return initial;
 }
@@ -103,7 +103,6 @@ const LOCATIONS = [
 
 export default async function BookYourStayPage({ searchParams }) {
   const sp = await searchParams;
-  const initial = pickInitial(sp);
   const sanityRooms = await sanityClient.fetch(ROOMS_QUERY);
   const rooms =
     sanityRooms.length > 0
@@ -118,6 +117,9 @@ export default async function BookYourStayPage({ searchParams }) {
           features: r.features || [],
         }))
       : ROOMS.map((r) => ({ ...r, key: r.title }));
+  const bookingRoomTypes = rooms.map((r) => r.title);
+  const initial = pickInitial(sp, bookingRoomTypes);
+  const selectedRoom = initial.roomType || bookingRoomTypes[0];
   return (
     <div className="pt-28">
       <JsonLd
@@ -150,7 +152,7 @@ export default async function BookYourStayPage({ searchParams }) {
                     Selected Room
                   </p>
                   <p className="text-lg font-bold text-primary">
-                    Deluxe Room - Twin Bed
+                    {selectedRoom}
                   </p>
                 </div>
               </div>
@@ -168,13 +170,12 @@ export default async function BookYourStayPage({ searchParams }) {
                   <select
                     id="room-category"
                     name="room-category"
-                    defaultValue="Deluxe Room - Twin Bed"
+                    defaultValue={selectedRoom}
                     className="w-full bg-white bg-none border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary pl-4 pr-12 py-3 text-sm appearance-none cursor-pointer"
                   >
-                    <option>Deluxe Room</option>
-                    <option>Deluxe Room - Twin Bed</option>
-                    <option>Suite Room</option>
-                    <option>Executive Suite</option>
+                    {bookingRoomTypes.map((rt) => (
+                      <option key={rt}>{rt}</option>
+                    ))}
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
                     expand_more
@@ -194,7 +195,7 @@ export default async function BookYourStayPage({ searchParams }) {
           </div>
 
           <div className="lg:col-span-5 bg-surface-container-lowest p-8 lg:p-10 rounded-3xl shadow-sm border border-outline-variant/10">
-            <BookingForm initial={initial} />
+            <BookingForm initial={initial} roomTypes={bookingRoomTypes} />
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ import { Resend } from "resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateHomeInquiry } from "@/lib/validations";
+import { getRoomOptions } from "@/lib/rooms";
 import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY_FULL } from "@/lib/address";
 import { resolveRecipients } from "@/lib/email";
 
@@ -50,15 +51,19 @@ export async function sendHomeInquiry(_prevState, formData) {
     };
   }
 
-  const { fieldErrors, valid, data } = validateHomeInquiry({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    phone: formData.get("phone"),
-    checkIn: formData.get("checkIn"),
-    checkOut: formData.get("checkOut"),
-    roomType: formData.get("roomType"),
-    notes: formData.get("notes"),
-  });
+  const { homeInquiry: homeRoomTypes } = await getRoomOptions();
+  const { fieldErrors, valid, data } = validateHomeInquiry(
+    {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      checkIn: formData.get("checkIn"),
+      checkOut: formData.get("checkOut"),
+      roomType: formData.get("roomType"),
+      notes: formData.get("notes"),
+    },
+    homeRoomTypes
+  );
   if (!valid) return { ok: false, fieldErrors };
 
   try {

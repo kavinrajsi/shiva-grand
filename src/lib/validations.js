@@ -91,7 +91,7 @@ function validateBookingPhone(phone) {
   return validatePhone(phone);
 }
 
-export function validateBookingInquiry(values) {
+export function validateBookingInquiry(values, allowedRoomTypes = BOOKING_ROOM_TYPES) {
   const fieldErrors = {};
   const name = (values.name || "").toString().trim();
   const email = (values.email || "").toString().trim();
@@ -131,7 +131,7 @@ export function validateBookingInquiry(values) {
     fieldErrors.guests = "Pick a valid option.";
 
   if (!roomType) fieldErrors.roomType = "Select a room type.";
-  else if (!BOOKING_ROOM_TYPES.includes(roomType))
+  else if (!allowedRoomTypes.includes(roomType))
     fieldErrors.roomType = "Pick a valid room type.";
 
   if (requests && requests.length > BOOKING_LIMITS.requests)
@@ -153,7 +153,7 @@ export function validateBookingInquiry(values) {
   };
 }
 
-export function validateHomeInquiry(values) {
+export function validateHomeInquiry(values, allowedRoomTypes = HOME_INQUIRY_ROOM_TYPES) {
   const fieldErrors = {};
   const name = (values.name || "").toString().trim();
   const email = (values.email || "").toString().trim();
@@ -188,7 +188,7 @@ export function validateHomeInquiry(values) {
     fieldErrors.checkOut = "Check-out must be after check-in.";
 
   if (!roomType) fieldErrors.roomType = "Pick a room type.";
-  else if (!HOME_INQUIRY_ROOM_TYPES.includes(roomType))
+  else if (!allowedRoomTypes.includes(roomType))
     fieldErrors.roomType = "Pick a valid room type.";
 
   if (notes && notes.length > BOOKING_LIMITS.requests)

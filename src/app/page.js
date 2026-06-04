@@ -7,6 +7,7 @@ import { urlFor } from "@/sanity/image";
 import { GALLERY_QUERY, TESTIMONIALS_QUERY, ROOMS_QUERY } from "@/sanity/queries";
 import JsonLd from "@/components/JsonLd";
 import { reservationActionSchema, webPageSchema } from "@/lib/schema";
+import { HOME_INQUIRY_ROOM_TYPES } from "@/lib/validations";
 import {
   HOTEL_ADDRESS,
   HOTEL_MAPS_URL,
@@ -163,6 +164,12 @@ export default async function HomePage() {
           alt: r.image?.alt || r.title,
         }))
       : ROOM_CARDS.map((r) => ({ ...r, key: r.title }));
+  const homeInquiryRoomTypes =
+    sanityRooms.length > 0
+      ? sanityRooms.map(
+          (r) => `${r.title} (₹${Number(r.price).toLocaleString("en-IN")})`
+        )
+      : HOME_INQUIRY_ROOM_TYPES;
   const testimonials =
     sanityTestimonials.length > 0 ? sanityTestimonials : SAMPLE_TESTIMONIALS;
   const gallery =
@@ -494,7 +501,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl">
-            <HomeInquiryForm />
+            <HomeInquiryForm roomTypes={homeInquiryRoomTypes} />
           </div>
         </div>
       </section>

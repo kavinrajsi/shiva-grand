@@ -47,9 +47,12 @@ const EMPTY = {
   notes: "",
 };
 
-export default function HomeInquiryForm() {
+export default function HomeInquiryForm({
+  roomTypes = HOME_INQUIRY_ROOM_TYPES,
+}) {
   const [state, formAction, isPending] = useActionState(sendHomeInquiry, null);
-  const [values, setValues] = useState(EMPTY);
+  const blank = { ...EMPTY, roomType: roomTypes[0] };
+  const [values, setValues] = useState(blank);
   const [touched, setTouched] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitted, setSubmitted] = useState(null);
@@ -57,15 +60,15 @@ export default function HomeInquiryForm() {
   useEffect(() => {
     if (state?.ok) {
       setShowSuccess(true);
-      setValues(EMPTY);
+      setValues({ ...EMPTY, roomType: roomTypes[0] });
       setTouched({});
       if (submitted) {
         window.open(whatsappHref(submitted), "_blank", "noopener,noreferrer");
       }
     }
-  }, [state, submitted]);
+  }, [state, submitted, roomTypes]);
 
-  const { fieldErrors: liveErrors } = validateHomeInquiry(values);
+  const { fieldErrors: liveErrors } = validateHomeInquiry(values, roomTypes);
   const serverErrors = state?.fieldErrors || {};
   const visible = {};
   for (const key of Object.keys(liveErrors)) {
@@ -210,7 +213,7 @@ export default function HomeInquiryForm() {
             visible.roomType ? "roomType-error" : undefined
           }
         >
-          {HOME_INQUIRY_ROOM_TYPES.map((opt) => (
+          {roomTypes.map((opt) => (
             <option key={opt} value={opt}>
               {opt}
             </option>

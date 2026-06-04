@@ -29,12 +29,13 @@ const EMPTY = {
   requests: "",
 };
 
-export default function BookingForm({ initial }) {
+export default function BookingForm({ initial, roomTypes = BOOKING_ROOM_TYPES }) {
   const [state, formAction, isPending] = useActionState(
     sendBookingInquiry,
     null
   );
-  const [values, setValues] = useState({ ...EMPTY, ...(initial || {}) });
+  const blank = { ...EMPTY, roomType: roomTypes[0] || EMPTY.roomType };
+  const [values, setValues] = useState({ ...blank, ...(initial || {}) });
   const [touched, setTouched] = useState(() => {
     const t = {};
     for (const key of Object.keys(initial || {})) {
@@ -47,12 +48,12 @@ export default function BookingForm({ initial }) {
   useEffect(() => {
     if (state?.ok) {
       setShowSuccess(true);
-      setValues(EMPTY);
+      setValues({ ...EMPTY, roomType: roomTypes[0] || EMPTY.roomType });
       setTouched({});
     }
-  }, [state]);
+  }, [state, roomTypes]);
 
-  const { fieldErrors: liveErrors } = validateBookingInquiry(values);
+  const { fieldErrors: liveErrors } = validateBookingInquiry(values, roomTypes);
   const serverErrors = state?.fieldErrors || {};
   const visible = {};
   for (const key of Object.keys(liveErrors)) {
@@ -138,7 +139,7 @@ export default function BookingForm({ initial }) {
           <SelectField
             id="roomType"
             label="Room Type"
-            options={BOOKING_ROOM_TYPES}
+            options={roomTypes}
             value={values.roomType}
             onChange={(v) => set("roomType", v)}
             onBlur={() => markTouched("roomType")}

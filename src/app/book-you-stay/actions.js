@@ -5,6 +5,7 @@ import { Resend } from "resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateBookingInquiry } from "@/lib/validations";
+import { getRoomOptions } from "@/lib/rooms";
 import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY_FULL } from "@/lib/address";
 import { resolveRecipients } from "@/lib/email";
 
@@ -51,16 +52,20 @@ export async function sendBookingInquiry(_prevState, formData) {
     };
   }
 
-  const { fieldErrors, valid, data } = validateBookingInquiry({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    phone: formData.get("phone"),
-    checkIn: formData.get("checkIn"),
-    checkOut: formData.get("checkOut"),
-    guests: formData.get("guests"),
-    roomType: formData.get("roomType"),
-    requests: formData.get("requests"),
-  });
+  const { booking: bookingRoomTypes } = await getRoomOptions();
+  const { fieldErrors, valid, data } = validateBookingInquiry(
+    {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      checkIn: formData.get("checkIn"),
+      checkOut: formData.get("checkOut"),
+      guests: formData.get("guests"),
+      roomType: formData.get("roomType"),
+      requests: formData.get("requests"),
+    },
+    bookingRoomTypes
+  );
   if (!valid) return { ok: false, fieldErrors };
 
   try {
