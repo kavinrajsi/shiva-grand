@@ -436,8 +436,8 @@ export default async function HomePage() {
               Ready to book <br /> your stay?
             </h2>
             <p className="text-white/80 text-lg mb-12">
-              Submit an inquiry and our team will get back to you within 30
-              minutes with the best available rates.
+              Submit an inquiry and our team will get back to you with the best
+              available rates.
             </p>
             <div className="space-y-6">
               <div className="flex items-start gap-4">

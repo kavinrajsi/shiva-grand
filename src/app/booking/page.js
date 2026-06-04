@@ -10,7 +10,7 @@ import { webPageSchema } from "@/lib/schema";
 export const metadata = {
   title: "Booking Pending Confirmation",
   description:
-    "Your reservation request has been received. Our team will call you within 30 minutes to confirm availability and finalize your stay.",
+    "Your reservation request has been received. Our team will call you to confirm availability and finalize your stay.",
   alternates: { canonical: "/booking" },
   robots: { index: false, follow: true },
 };
@@ -31,7 +31,7 @@ const STEPS = [
   {
     n: "02",
     title: "Confirmation Call",
-    body: "A team member will call you within 30 minutes to confirm details and payment options.",
+    body: "A team member will call you to confirm details and payment options.",
   },
   {
     n: "03",
@@ -48,7 +48,7 @@ export default function BookingPage() {
           path: "/booking",
           name: "Booking Pending — Shiva Grand Residency",
           description:
-            "Your reservation request has been received. We'll call you within 30 minutes to confirm.",
+            "Your reservation request has been received. We'll call you to confirm.",
         })}
       />
       <div className="max-w-7xl mx-auto px-8">

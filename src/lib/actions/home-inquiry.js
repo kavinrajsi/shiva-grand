@@ -124,7 +124,7 @@ export async function sendHomeInquiry(_prevState, formData) {
     <div style="font-family:Manrope,Arial,sans-serif;max-width:560px;margin:auto;color:#191c1b;">
       <h2 style="color:#0d5533;margin:0 0 16px;">Thanks, ${safe.name} — we got your booking inquiry.</h2>
       <p style="line-height:1.6;color:#404942;">
-        Your reservation is <strong>not yet confirmed</strong>. Our team will call you within 30 minutes to verify availability and finalize the details.
+        Your reservation is <strong>not yet confirmed</strong>. Our team will call you to verify availability and finalize the details.
       </p>
       <div style="background:#f2f4f2;padding:16px;border-radius:12px;font-size:14px;color:#191c1b;">
         <p style="margin:0 0 6px;color:#707971;text-transform:uppercase;letter-spacing:0.08em;font-size:11px;">Your request</p>
