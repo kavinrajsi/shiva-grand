@@ -21,4 +21,11 @@ export const HOTEL_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=$
 export const HOTEL_PHONE_DISPLAY = "+91 90477 57777";
 export const HOTEL_PHONE_TEL = "+919047757777";
 
+// Landline (Coimbatore STD 0422). Tel drops the trunk 0 and prefixes +91.
+export const HOTEL_LANDLINE_DISPLAY = "0422 - 4357777";
+export const HOTEL_LANDLINE_TEL = "+914224357777";
+
+// Both numbers as a single human-readable string for plain-text contexts.
+export const HOTEL_PHONE_DISPLAY_FULL = `${HOTEL_PHONE_DISPLAY} / ${HOTEL_LANDLINE_DISPLAY}`;
+
 export const HOTEL_PRICE_RANGE = "₹1,500–₹2,000";

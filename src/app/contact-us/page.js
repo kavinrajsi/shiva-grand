@@ -4,6 +4,8 @@ import {
   HOTEL_ADDRESS,
   HOTEL_PHONE_DISPLAY,
   HOTEL_PHONE_TEL,
+  HOTEL_LANDLINE_DISPLAY,
+  HOTEL_LANDLINE_TEL,
 } from "@/lib/address";
 import JsonLd from "@/components/JsonLd";
 import { contactPageSchema, webPageSchema } from "@/lib/schema";
@@ -78,6 +80,13 @@ export default function ContactUsPage() {
                     className="text-on-surface-variant hover:text-primary transition-colors"
                   >
                     {HOTEL_PHONE_DISPLAY}
+                  </a>
+                  {" / "}
+                  <a
+                    href={`tel:${HOTEL_LANDLINE_TEL}`}
+                    className="text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    {HOTEL_LANDLINE_DISPLAY}
                   </a>
                 </p>
               </div>

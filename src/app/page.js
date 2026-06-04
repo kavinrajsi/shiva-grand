@@ -12,6 +12,8 @@ import {
   HOTEL_MAPS_URL,
   HOTEL_PHONE_DISPLAY,
   HOTEL_PHONE_TEL,
+  HOTEL_LANDLINE_DISPLAY,
+  HOTEL_LANDLINE_TEL,
 } from "@/lib/address";
 
 export const revalidate = 60;
@@ -465,6 +467,13 @@ export default async function HomePage() {
                       className="text-white hover:underline"
                     >
                       {HOTEL_PHONE_DISPLAY}
+                    </a>
+                    {" / "}
+                    <a
+                      href={`tel:${HOTEL_LANDLINE_TEL}`}
+                      className="text-white hover:underline"
+                    >
+                      {HOTEL_LANDLINE_DISPLAY}
                     </a>
                   </p>
                 </div>

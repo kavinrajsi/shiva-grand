@@ -6,6 +6,8 @@ import {
   HOTEL_ADDRESS,
   HOTEL_PHONE_DISPLAY,
   HOTEL_PHONE_TEL,
+  HOTEL_LANDLINE_DISPLAY,
+  HOTEL_LANDLINE_TEL,
 } from "@/lib/address";
 
 const QUICK_LINKS = [
@@ -60,12 +62,21 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">call</span>
-              <a
-                href={`tel:${HOTEL_PHONE_TEL}`}
-                className="hover:text-white transition-colors"
-              >
-                {HOTEL_PHONE_DISPLAY}
-              </a>
+              <span>
+                <a
+                  href={`tel:${HOTEL_PHONE_TEL}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {HOTEL_PHONE_DISPLAY}
+                </a>
+                {" / "}
+                <a
+                  href={`tel:${HOTEL_LANDLINE_TEL}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {HOTEL_LANDLINE_DISPLAY}
+                </a>
+              </span>
             </li>
           </ul>
         </div>

@@ -5,7 +5,7 @@ import { Resend } from "resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateHomeInquiry } from "@/lib/validations";
-import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY } from "@/lib/address";
+import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY_FULL } from "@/lib/address";
 import { resolveRecipients } from "@/lib/email";
 
 function escapeHtml(str) {
@@ -133,7 +133,7 @@ export async function sendHomeInquiry(_prevState, formData) {
         <p style="margin:4px 0;"><strong>Stay type:</strong> ${safe.roomType}</p>
       </div>
       <p style="line-height:1.6;color:#404942;margin-top:24px;">
-        For anything urgent, call us on <strong>${HOTEL_PHONE_DISPLAY}</strong>.
+        For anything urgent, call us on <strong>${HOTEL_PHONE_DISPLAY_FULL}</strong>.
       </p>
       <p style="color:#707971;font-size:12px;margin-top:32px;">
         Shiva Grand Residency · ${HOTEL_ADDRESS}

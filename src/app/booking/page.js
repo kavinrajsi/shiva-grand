@@ -3,6 +3,8 @@ import {
   HOTEL_ADDRESS,
   HOTEL_PHONE_DISPLAY,
   HOTEL_PHONE_TEL,
+  HOTEL_LANDLINE_DISPLAY,
+  HOTEL_LANDLINE_TEL,
 } from "@/lib/address";
 import JsonLd from "@/components/JsonLd";
 import { webPageSchema } from "@/lib/schema";
@@ -153,13 +155,24 @@ export default function BookingPage() {
                 immediately, please reach out to our 24/7 concierge.
               </p>
               <div className="space-y-4">
-                <a
-                  href={`tel:${HOTEL_PHONE_TEL}`}
-                  className="flex items-center gap-4 hover:translate-x-2 transition-transform"
-                >
+                <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined">call</span>
-                  <span className="font-medium">{HOTEL_PHONE_DISPLAY}</span>
-                </a>
+                  <span className="font-medium">
+                    <a
+                      href={`tel:${HOTEL_PHONE_TEL}`}
+                      className="hover:underline"
+                    >
+                      {HOTEL_PHONE_DISPLAY}
+                    </a>
+                    {" / "}
+                    <a
+                      href={`tel:${HOTEL_LANDLINE_TEL}`}
+                      className="hover:underline"
+                    >
+                      {HOTEL_LANDLINE_DISPLAY}
+                    </a>
+                  </span>
+                </div>
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined">location_on</span>
                   <span className="text-sm">{HOTEL_ADDRESS}</span>
