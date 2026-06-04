@@ -18,6 +18,25 @@ function inputCx(touched, error) {
   return `${INPUT_BASE} ${touched && error ? INPUT_BAD : INPUT_OK}`;
 }
 
+const WHATSAPP_NUMBER = "919585599336";
+
+function whatsappHref(d) {
+  const lines = [
+    "New Booking Inquiry — Shiva Grand Residency",
+    "",
+    `Name: ${d.name}`,
+    `Phone: ${d.phone}`,
+    `Email: ${d.email}`,
+    `Check-in: ${d.checkIn}`,
+    `Check-out: ${d.checkOut}`,
+    `Stay Type: ${d.roomType}`,
+    d.notes ? `Notes: ${d.notes}` : null,
+  ].filter((line) => line !== null);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    lines.join("\n")
+  )}`;
+}
+
 const EMPTY = {
   name: "",
   email: "",
@@ -33,14 +52,18 @@ export default function HomeInquiryForm() {
   const [values, setValues] = useState(EMPTY);
   const [touched, setTouched] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(null);
 
   useEffect(() => {
     if (state?.ok) {
       setShowSuccess(true);
       setValues(EMPTY);
       setTouched({});
+      if (submitted) {
+        window.open(whatsappHref(submitted), "_blank", "noopener,noreferrer");
+      }
     }
-  }, [state]);
+  }, [state, submitted]);
 
   const { fieldErrors: liveErrors } = validateHomeInquiry(values);
   const serverErrors = state?.fieldErrors || {};
@@ -62,16 +85,28 @@ export default function HomeInquiryForm() {
           Request received.
         </h3>
         <p className="text-zinc-600 max-w-md mx-auto">
-          Thanks — our team will call you on the number you provided within 30
-          minutes to confirm availability.
+          Thanks — our team will call you on the number you provided to confirm availability.
         </p>
-        <button
-          type="button"
-          onClick={() => setShowSuccess(false)}
-          className="mt-6 text-primary font-bold hover:underline"
-        >
-          Send another inquiry
-        </button>
+        {submitted ? (
+          <a
+            href={whatsappHref(submitted)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-lg font-bold text-sm shadow-md hover:bg-[#1ebe57] transition-colors"
+          >
+            <span className="material-symbols-outlined fill-1">chat</span>
+            Share details on WhatsApp
+          </a>
+        ) : null}
+        <div>
+          <button
+            type="button"
+            onClick={() => setShowSuccess(false)}
+            className="mt-6 text-primary font-bold hover:underline"
+          >
+            Send another inquiry
+          </button>
+        </div>
       </div>
     );
   }
@@ -85,7 +120,12 @@ export default function HomeInquiryForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-6" noValidate>
+    <form
+      action={formAction}
+      onSubmit={() => setSubmitted(values)}
+      className="space-y-6"
+      noValidate
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <DateField
           id="checkIn"
