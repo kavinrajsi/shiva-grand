@@ -176,7 +176,7 @@ export default async function HomePage() {
       <section className="relative h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://lh3.googleusercontent.com/aida/ADBb0uiLzSlg-TAwy5wDZ3Xep7MOUxcsoCMmie3Zivhzkc7_CZ4IufuckxEjP3W2wgSCVhljwvNFbwyi3-mTPrqpzDoEBxQniVkc462ByiNKeaF_hnclCw7vXlM8RbLDDME_9LbC0ROMASnX5EJF_Mmk_5jtcmsom6PtI2U8oeZaGvXNl7tVBdOOvgVGbiIHuRANRI63odRJaRfJfmy-5KYewqwRDebf_yqtd-L6Al4k_44D9K0s_lhU7lWxGJBo8Fsrv4e9-PNHbDd-YA"
+            src="/home-page-banner.jpeg"
             alt="Modern Residency Exterior"
             fill
             priority
