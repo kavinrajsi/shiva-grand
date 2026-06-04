@@ -55,6 +55,19 @@ export const BLOG_HERO_TESTIMONIAL_QUERY = `*[_type == "testimonial" && featured
   quote
 }`;
 
+// Published rooms, ordered by `order` then price.
+export const ROOMS_QUERY = `*[_type == "room" && (published == true || !defined(published))] | order(coalesce(order, 9999) asc, price asc) {
+  _id,
+  title,
+  price,
+  blurb,
+  image,
+  ctaLabel,
+  badge,
+  badgeStyle,
+  features
+}`;
+
 // Two related posts, excluding the current one.
 export const RELATED_POSTS_QUERY = `*[_type == "post" && slug.current != $slug && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc)[0...2] {
   _id,

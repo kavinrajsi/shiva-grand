@@ -4,6 +4,14 @@ import { BOOKING_GUESTS, BOOKING_ROOM_TYPES } from "@/lib/validations";
 import { HOTEL_MAPS_URL } from "@/lib/address";
 import JsonLd from "@/components/JsonLd";
 import { webPageSchema } from "@/lib/schema";
+import { sanityClient } from "@/sanity/client";
+import { urlFor } from "@/sanity/image";
+import { ROOMS_QUERY } from "@/sanity/queries";
+
+const BADGE_STYLES = {
+  light: "bg-white/80 text-primary",
+  highlight: "bg-secondary/80 text-on-primary",
+};
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -96,6 +104,20 @@ const LOCATIONS = [
 export default async function BookYourStayPage({ searchParams }) {
   const sp = await searchParams;
   const initial = pickInitial(sp);
+  const sanityRooms = await sanityClient.fetch(ROOMS_QUERY);
+  const rooms =
+    sanityRooms.length > 0
+      ? sanityRooms.map((r) => ({
+          key: r._id,
+          title: r.title,
+          badge: r.badge || "",
+          badgeStyle: BADGE_STYLES[r.badgeStyle] || BADGE_STYLES.light,
+          blurb: r.blurb,
+          image: urlFor(r.image).width(900).url(),
+          alt: r.image?.alt || r.title,
+          features: r.features || [],
+        }))
+      : ROOMS.map((r) => ({ ...r, key: r.title }));
   return (
     <div className="pt-28">
       <JsonLd
@@ -199,8 +221,8 @@ export default async function BookYourStayPage({ searchParams }) {
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {ROOMS.map((room) => (
-              <div key={room.title} className="group">
+            {rooms.map((room) => (
+              <div key={room.key} className="group">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container shadow-sm mb-6 transition-transform duration-500 hover:scale-[1.02]">
                   <Image
                     src={room.image}
@@ -209,13 +231,15 @@ export default async function BookYourStayPage({ searchParams }) {
                     sizes="(min-width: 768px) 30vw, 100vw"
                     className="object-cover"
                   />
-                  <div
-                    className={`absolute bottom-4 left-4 backdrop-blur-md px-3 py-1 rounded-full ${room.badgeStyle}`}
-                  >
-                    <span className="text-[10px] font-bold tracking-widest uppercase">
-                      {room.badge}
-                    </span>
-                  </div>
+                  {room.badge ? (
+                    <div
+                      className={`absolute bottom-4 left-4 backdrop-blur-md px-3 py-1 rounded-full ${room.badgeStyle}`}
+                    >
+                      <span className="text-[10px] font-bold tracking-widest uppercase">
+                        {room.badge}
+                      </span>
+                    </div>
+                  ) : null}
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2">
                   {room.title}

@@ -4,7 +4,7 @@ import HomeInquiryForm from "@/components/HomeInquiryForm";
 import QuickBookingBar from "@/components/QuickBookingBar";
 import { sanityClient } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
-import { GALLERY_QUERY, TESTIMONIALS_QUERY } from "@/sanity/queries";
+import { GALLERY_QUERY, TESTIMONIALS_QUERY, ROOMS_QUERY } from "@/sanity/queries";
 import JsonLd from "@/components/JsonLd";
 import { reservationActionSchema, webPageSchema } from "@/lib/schema";
 import {
@@ -146,10 +146,23 @@ function initialsFor(name) {
 }
 
 export default async function HomePage() {
-  const [sanityTestimonials, sanityGallery] = await Promise.all([
+  const [sanityTestimonials, sanityGallery, sanityRooms] = await Promise.all([
     sanityClient.fetch(TESTIMONIALS_QUERY),
     sanityClient.fetch(GALLERY_QUERY),
+    sanityClient.fetch(ROOMS_QUERY),
   ]);
+  const roomCards =
+    sanityRooms.length > 0
+      ? sanityRooms.map((r) => ({
+          key: r._id,
+          title: r.title,
+          price: `₹${Number(r.price).toLocaleString("en-IN")}`,
+          blurb: r.blurb,
+          cta: r.ctaLabel || "Book Now",
+          image: urlFor(r.image).width(800).url(),
+          alt: r.image?.alt || r.title,
+        }))
+      : ROOM_CARDS.map((r) => ({ ...r, key: r.title }));
   const testimonials =
     sanityTestimonials.length > 0 ? sanityTestimonials : SAMPLE_TESTIMONIALS;
   const gallery =
@@ -281,9 +294,9 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ROOM_CARDS.map((room) => (
+            {roomCards.map((room) => (
               <div
-                key={room.title}
+                key={room.key}
                 className="bg-white rounded-xl overflow-hidden border border-zinc-200 group hover:shadow-lg transition-all"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
