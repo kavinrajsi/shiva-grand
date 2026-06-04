@@ -6,6 +6,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import { createServerSupabase } from "@/lib/supabase";
 import { validateBookingInquiry } from "@/lib/validations";
 import { HOTEL_ADDRESS, HOTEL_PHONE_DISPLAY } from "@/lib/address";
+import { resolveRecipients } from "@/lib/email";
 
 function escapeHtml(str) {
   return String(str)
@@ -144,20 +145,23 @@ export async function sendBookingInquiry(_prevState, formData) {
     </div>
   `.trim();
 
+  const adminRecipients = resolveRecipients({ from, to: adminTo, cc, bcc });
+  const userRecipients = resolveRecipients({ from, to: data.email });
+
   try {
     const [adminResult, userResult] = await Promise.all([
       resend.emails.send({
         from,
-        to: adminTo,
-        cc,
-        bcc,
+        to: adminRecipients.to,
+        cc: adminRecipients.cc,
+        bcc: adminRecipients.bcc,
         replyTo: data.email,
         subject: `New booking inquiry — ${data.name} (${data.checkIn} → ${data.checkOut})`,
         html: adminHtml,
       }),
       resend.emails.send({
         from,
-        to: data.email,
+        to: userRecipients.to,
         subject: "Your booking request is being processed — Shiva Grand",
         html: userHtml,
       }),
