@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
+import RoomSelector from "@/components/RoomSelector";
 import { BOOKING_GUESTS, BOOKING_ROOM_TYPES } from "@/lib/validations";
 import { HOTEL_MAPS_URL } from "@/lib/address";
 import JsonLd from "@/components/JsonLd";
@@ -136,62 +137,8 @@ export default async function BookYourStayPage({ searchParams }) {
       />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-7 space-y-8">
-            <div className="relative group">
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg bg-surface-container">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZLuQ5lCT22yd5ejTUAbgipYSuBPv4r4UPyVPevFYCcRZwm_lSQn8Zd8DHRyzbp4E4NX6cHJsEnRlbND8_ttXF1nEQcsOjMV38FinviCAdKp62fIRg7ceV3xowH8dS0-pQ7pSecOnxM_rmUSTqgZoGuojbsP9Ceo47uWKf9B4vQ24RS1KttLUf9gMDIKKFP1w7c_BSjo7O66u-7incPNZxz2QCOyi0EOMXVHPg0Ofe_W4ip8mSH3xhLecMwp_uswCSjxUzJz8ateHf"
-                  alt="Selected Room"
-                  fill
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-sm">
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">
-                    Selected Room
-                  </p>
-                  <p className="text-lg font-bold text-primary">
-                    {selectedRoom}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-surface-container-low p-6 rounded-2xl space-y-4">
-              <div className="space-y-1.5">
-                <label
-                  htmlFor="room-category"
-                  className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1"
-                >
-                  Select Room Category
-                </label>
-                <div className="relative">
-                  <select
-                    id="room-category"
-                    name="room-category"
-                    defaultValue={selectedRoom}
-                    className="w-full bg-white bg-none border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary pl-4 pr-12 py-3 text-sm appearance-none cursor-pointer"
-                  >
-                    {bookingRoomTypes.map((rt) => (
-                      <option key={rt}>{rt}</option>
-                    ))}
-                  </select>
-                  <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
-                    expand_more
-                  </span>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-3.5 rounded-xl font-bold tracking-wide transition-all active:scale-[0.98] flex items-center justify-center gap-2"
-              >
-                <span className="material-symbols-outlined text-xl">
-                  sync_alt
-                </span>
-                Change Room Type
-              </button>
-            </div>
+          <div className="lg:col-span-7">
+            <RoomSelector rooms={rooms} initialRoom={selectedRoom} />
           </div>
 
           <div className="lg:col-span-5 bg-surface-container-lowest p-8 lg:p-10 rounded-3xl shadow-sm border border-outline-variant/10">
